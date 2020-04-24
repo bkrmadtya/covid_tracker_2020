@@ -14,10 +14,10 @@ const MAPBOX_TOKEN =
 
 const MapView = () => {
   const [data, setData] = useState([]);
-  const [hoveredCountry, setHoveredCountry] = useState('Australia');
+  const [hoveredCountry, setHoveredCountry] = useState();
 
   const _fetchData = async () => {
-    const { data } = await DataService.getGlobalData();
+    const data = await DataService.getGlobalData();
     setData(data);
   };
 
@@ -37,12 +37,12 @@ const MapView = () => {
 
   return (
     <MapGL
-      style={{ width: '100%', height: '400px' }}
+      style={{ width: '100%', height: '350px', borderRadius: 5 }}
       accessToken={MAPBOX_TOKEN}
       mapStyle="mapbox://styles/mapbox/light-v9"
-      latitude={0}
+      latitude={20}
       longitude={0}
-      zoom={-1}
+      zoom={0.5}
       onViewportChange={(viewport) => {}}
       onHover={() => console.log('hovered')}
     >
