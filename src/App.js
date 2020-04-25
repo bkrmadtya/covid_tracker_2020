@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   Container,
+  Grid,
   AppBar,
   Toolbar,
   Typography,
-  CssBaseline,
   makeStyles,
   Box,
 } from '@material-ui/core';
@@ -12,7 +12,7 @@ import {
 import './App.css';
 
 import MapView from './components/Map/MapView';
-import Chart from './components/Chart';
+import LineChart from './components/LineChart';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -41,13 +41,18 @@ const NavBar = () => {
 function App() {
   return (
     <>
-      {/* <CssBaseline /> */}
       <NavBar />
       <Toolbar />
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Box my={2}>
-          <MapView />
-          <Chart />
+          <Grid container spacing={3}>
+            <Grid item xs={8}>
+              <MapView />
+            </Grid>
+            <Grid item xs={4}>
+              <LineChart />
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </>
