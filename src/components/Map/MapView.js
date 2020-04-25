@@ -39,7 +39,7 @@ const MapView = () => {
     <MapGL
       style={{
         width: '100%',
-        height: '350px',
+        height: '100%',
         borderRadius: 5,
       }}
       accessToken={MAPBOX_TOKEN}
