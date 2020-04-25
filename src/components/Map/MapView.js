@@ -7,7 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import CircleMarker from './CircleMarker';
 
-import DataService from '../services/DataServices';
+import DataService from '../../services/DataServices';
 
 const MAPBOX_TOKEN =
   'pk.eyJ1IjoiYmtybWFkdHlhIiwiYSI6ImNrOHN2bnAyNzBsdHgzc3FhYXVwczNndmcifQ.ywNlS9BxkO7FS-sYn1cMKw';
@@ -37,7 +37,11 @@ const MapView = () => {
 
   return (
     <MapGL
-      style={{ width: '100%', height: '350px', borderRadius: 5 }}
+      style={{
+        width: '100%',
+        height: '350px',
+        borderRadius: 5,
+      }}
       accessToken={MAPBOX_TOKEN}
       mapStyle="mapbox://styles/mapbox/light-v9"
       latitude={20}

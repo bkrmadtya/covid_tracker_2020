@@ -11,12 +11,14 @@ import {
 
 import './App.css';
 
-import MapView from './components/MapView';
+import MapView from './components/Map/MapView';
+import Chart from './components/Chart';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     marginBottom: theme.spacing(2),
     backgroundColor: 'black',
+    textAlign: 'center',
   },
   title: {
     flexGrow: 1,
@@ -39,12 +41,13 @@ const NavBar = () => {
 function App() {
   return (
     <>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <NavBar />
       <Toolbar />
       <Container maxWidth="md">
         <Box my={2}>
           <MapView />
+          <Chart />
         </Box>
       </Container>
     </>

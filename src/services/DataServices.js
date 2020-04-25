@@ -3,7 +3,6 @@ import axios from 'axios';
 const getGlobalData = async () => {
   try {
     const response = await axios.get('https://corona.lmao.ninja/v2/countries');
-    console.log(response);
     return response.data;
   } catch (e) {
     console.log(`Fiale to fetch countries: ${e.message}`, e);
@@ -14,9 +13,8 @@ const getGlobalData = async () => {
 const getWeeklyData = async () => {
   try {
     const response = await axios.get(
-      'https://corona.lmao.ninja/v2/historical/all?lastdays=7'
+      'https://corona.lmao.ninja/v2/historical/all?lastdays=all'
     );
-    // console.log(response);
     return response.data;
   } catch (e) {
     console.log(`Failed to fetch weekly data: ${e.message}`, e);

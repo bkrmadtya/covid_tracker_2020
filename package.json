@@ -12,6 +12,7 @@
     "chart.js": "^2.9.3",
     "mapbox-gl": "^1.9.1",
     "react": "^16.13.1",
+    "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "semantic-ui-react": "^0.88.0"
