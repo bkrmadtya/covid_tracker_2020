@@ -8,6 +8,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import CircleMarker from './CircleMarker';
 
 import DataService from '../../services/DataServices';
+import { Card } from '@material-ui/core';
 
 const MAPBOX_TOKEN =
   'pk.eyJ1IjoiYmtybWFkdHlhIiwiYSI6ImNrOHN2bnAyNzBsdHgzc3FhYXVwczNndmcifQ.ywNlS9BxkO7FS-sYn1cMKw';
@@ -36,34 +37,36 @@ const MapView = () => {
   if (!data) return null;
 
   return (
-    <MapGL
-      style={{
-        width: '100%',
-        height: '100%',
-        borderRadius: 5,
-      }}
-      accessToken={MAPBOX_TOKEN}
-      mapStyle="mapbox://styles/mapbox/light-v9"
-      latitude={20}
-      longitude={0}
-      zoom={0.5}
-      onViewportChange={(viewport) => {}}
-      onHover={() => console.log('hovered')}
-    >
-      {data.map((country) => (
-        <CircleMarker
-          key={country.country}
-          country={country}
-          hoveredCountry={hoveredCountry}
-          onHover={_onHover}
-          onLeave={_onLeave}
-        />
-      ))}
+    <Card elevation={4} style={{ height: '100%' }}>
+      <MapGL
+        style={{
+          width: '100%',
+          height: '100%',
+          borderRadius: 5,
+        }}
+        accessToken={MAPBOX_TOKEN}
+        mapStyle="mapbox://styles/mapbox/light-v9"
+        latitude={20}
+        longitude={0}
+        zoom={0.5}
+        onViewportChange={(viewport) => {}}
+        onHover={() => console.log('hovered')}
+      >
+        {data.map((country) => (
+          <CircleMarker
+            key={country.country}
+            country={country}
+            hoveredCountry={hoveredCountry}
+            onHover={_onHover}
+            onLeave={_onLeave}
+          />
+        ))}
 
-      <NavigationControl showZoom position="bottom-right" />
+        <NavigationControl showZoom position="bottom-right" />
 
-      <FullscreenControl position="top-right" />
-    </MapGL>
+        <FullscreenControl position="top-right" />
+      </MapGL>
+    </Card>
   );
 };
 

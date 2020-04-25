@@ -14,7 +14,7 @@ const PopUp = ({ country, radius }) => {
       closeButton={false}
       closeOnClick={false}
     >
-      <Segment basic floated style={styles.container}>
+      <Segment basic style={styles.container}>
         <List verticalAlign="middle" divided style={styles.list}>
           <List.Item>
             <List verticalAlign="middle" style={styles.list}>

@@ -10,9 +10,9 @@ const getGlobalData = async () => {
   }
 };
 
-const getDataByCountry = async (country) => {
+const getDataByCountry = async (country = 'all') => {
   try {
-    const response = await axios.get('https://corona.lmao.ninja/v2/all');
+    const response = await axios.get(`https://corona.lmao.ninja/v2/${country}`);
     return response.data;
   } catch (e) {
     console.log(`Failed to fetch data for ${country}: ${e.message}`, e);
