@@ -45,12 +45,15 @@ const MapView = () => {
           borderRadius: 5,
         }}
         accessToken={MAPBOX_TOKEN}
-        mapStyle="mapbox://styles/mapbox/light-v9"
+        mapStyle="mapbox://styles/mapbox/dark-v10"
         latitude={20}
         longitude={0}
         zoom={0.5}
         onViewportChange={(viewport) => {}}
         onHover={() => console.log('hovered')}
+        visibility={{
+          labels: false,
+        }}
       >
         {data.map((country) => (
           <CircleMarker
@@ -70,4 +73,4 @@ const MapView = () => {
   );
 };
 
-export default MapView;
+export default React.memo(MapView);
