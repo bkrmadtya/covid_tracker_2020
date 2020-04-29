@@ -8,8 +8,13 @@ const initialState = {
 const countriesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case INIT_COUNTRY_LIST:
-      // console.log('[INIT_COUNTRY_LIST] : ', payload);
-      return payload;
+      const list = payload.map(({ country, countryInfo: { flag } }) => ({
+        country,
+        flag,
+      }));
+      list.push({ country: 'Global' });
+      console.log('[INIT_COUNTRY_LIST] : ', list);
+      return { list, ...state };
     default:
       return state;
   }

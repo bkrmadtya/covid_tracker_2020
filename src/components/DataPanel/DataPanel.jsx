@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import DetailCards from 'components/DataPanel/Details/DetailCards';
 
 import DataServices from 'services/DataServices';
+import SelectCountry from './SelectCountry';
 
 const DataPanel = () => {
   const [data, setData] = useState({});
@@ -16,7 +17,12 @@ const DataPanel = () => {
     _fetchData();
   }, []);
 
-  return <DetailCards data={data} />;
+  return (
+    <>
+      <SelectCountry />
+      <DetailCards data={data} />
+    </>
+  );
 };
 
 export default DataPanel;
