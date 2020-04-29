@@ -7,7 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import CircleMarker from './CircleMarker';
 
-import DataService from '../../services/DataServices';
+import DataService from 'services/DataServices';
 import { Card } from '@material-ui/core';
 
 const MAPBOX_TOKEN =
