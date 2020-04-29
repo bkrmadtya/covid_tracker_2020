@@ -14,7 +14,7 @@ const createDataSet = (data) => {
     deaths: 'grey',
   };
 
-  ['cases', 'recovered', 'deaths'].map((i) => {
+  ['cases', 'recovered', 'deaths'].forEach((i) => {
     const color = colors[i];
     newDataSet.datasets.push({
       label: i.charAt(0).toUpperCase() + i.slice(1),

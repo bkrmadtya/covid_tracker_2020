@@ -1,4 +1,4 @@
-import { INIT_DATA } from './actionTypes';
+import { INIT_DATA, INIT_COUNTRY_LIST } from './actionTypes';
 
 import DataServices from 'services/DataServices';
 
@@ -8,6 +8,11 @@ export const getInitialData = () => async (dispatch) => {
 
     dispatch({
       type: INIT_DATA,
+      payload: data,
+    });
+
+    dispatch({
+      type: INIT_COUNTRY_LIST,
       payload: data,
     });
   } catch (e) {
