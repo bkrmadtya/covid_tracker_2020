@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { connect } from 'react-redux';
 import {
   FormControl,
   InputLabel,
@@ -6,6 +7,7 @@ import {
   MenuItem,
   makeStyles,
   Typography,
+  Avatar,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,13 +21,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SelectCountry = () => {
+const SelectCountry = React.memo(({ countries }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('Global');
+  const [value, setValue] = React.useState('');
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
+  console.log(countries);
+
+  const _renderCountryList = () => {
+    return countries.list.map(({ country, flag }) => {
+      return (
+        <MenuItem key={country} value={country}>
+          {country}
+          <Avatar src={flag} />
+        </MenuItem>
+      );
+    });
+  };
+
+  const memoizedCountryListRender = useCallback(_renderCountryList, [
+    _renderCountryList,
+  ]);
 
   return (
     <>
@@ -35,24 +54,10 @@ const SelectCountry = () => {
           MenuProps={{ disableScrollLock: true }}
           value={value}
           onChange={handleChange}
-          defaultValue="Global"
+          //   defaultValue={countries.selected}
         >
-          <MenuItem value={'Global'}>Global</MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {memoizedCountryListRender()}
+          {/* {_renderCountryList()} */}
         </Select>
       </FormControl>
 
@@ -64,6 +69,12 @@ const SelectCountry = () => {
       </Typography>
     </>
   );
+});
+
+const mapStateToProps = (state) => {
+  return {
+    countries: state.countries,
+  };
 };
 
-export default SelectCountry;
+export default connect(mapStateToProps)(SelectCountry);
