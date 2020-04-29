@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import DetailCards from './Details/DetailCards';
+import DetailCards from 'components/DataPanel/Details/DetailCards';
 
 import DataServices from 'services/DataServices';
 
