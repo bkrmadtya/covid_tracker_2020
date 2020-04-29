@@ -48,9 +48,3 @@ function App() {
 }
 
 export default App;
-
-const styles = {
-  container: {
-    marginTop: 10,
-  },
-};
