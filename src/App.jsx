@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Grid, Toolbar, makeStyles, Box } from '@material-ui/core';
 
 import './App.css';
@@ -7,6 +7,9 @@ import NavBar from './components/NavBar';
 import MapView from './components/Map/MapView';
 import LineChart from './components/LineChart';
 import DataPanel from './components/DataPanel';
+
+import { getInitialData } from 'store/actions/dataActions';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+function App({ getInitialData }) {
+  useEffect(() => {
+    getInitialData();
+  }, [getInitialData]);
+
   const classes = useStyles();
   return (
     <>
@@ -47,4 +54,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, { getInitialData })(App);

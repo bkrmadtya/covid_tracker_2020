@@ -1,10 +1,10 @@
-import { INIT_DATA } from '../actionTypes';
+import { INIT_DATA } from './actionTypes';
 
 import DataServices from 'services/DataServices';
 
-const getInitialData = () => async (dispatch) => {
+export const getInitialData = () => async (dispatch) => {
   try {
-    const data = await DataServices.getDataByCountry('all');
+    const data = await DataServices.getGlobalData();
 
     dispatch({
       type: INIT_DATA,
@@ -13,8 +13,4 @@ const getInitialData = () => async (dispatch) => {
   } catch (e) {
     console.log(e);
   }
-};
-
-export default {
-  getInitialData,
 };

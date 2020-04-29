@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import MapGL, {
   NavigationControl,
   FullscreenControl,
 } from '@urbica/react-map-gl';
+import { Card } from '@material-ui/core';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import CircleMarker from './CircleMarker';
 
 import DataService from 'services/DataServices';
-import { Card } from '@material-ui/core';
 
 const MAPBOX_TOKEN =
   'pk.eyJ1IjoiYmtybWFkdHlhIiwiYSI6ImNrOHN2bnAyNzBsdHgzc3FhYXVwczNndmcifQ.ywNlS9BxkO7FS-sYn1cMKw';
 
-const MapView = () => {
+const MapView = ({ datas }) => {
   const [data, setData] = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState();
 
@@ -55,7 +56,7 @@ const MapView = () => {
           labels: false,
         }}
       >
-        {data.map((country) => (
+        {datas.map((country) => (
           <CircleMarker
             key={country.country}
             country={country}
@@ -73,4 +74,10 @@ const MapView = () => {
   );
 };
 
-export default React.memo(MapView);
+const mapStateToProps = (state) => {
+  return {
+    datas: state.data,
+  };
+};
+
+export default connect(mapStateToProps)(MapView);
