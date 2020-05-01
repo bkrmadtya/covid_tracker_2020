@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import {
   FormControl,
   InputLabel,
-  Select,
   MenuItem,
   makeStyles,
   Typography,
-  Avatar,
 } from '@material-ui/core';
+import Select from 'react-select';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -25,21 +24,20 @@ const SelectCountry = React.memo(({ countries }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState('');
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChange = (data) => {
+    setValue(data.value);
+    console.log(data.value);
   };
 
-  console.log(countries);
-
   const _renderCountryList = () => {
-    return countries.list.map(({ country, flag }) => {
-      return (
-        <MenuItem key={country} value={country}>
-          {country}
-          <Avatar src={flag} />
-        </MenuItem>
-      );
-    });
+    return (
+      <Select
+        options={countries.list}
+        defaultValue={countries.list[0]}
+        isSearchable={true}
+        onChange={handleChange}
+      />
+    );
   };
 
   const memoizedCountryListRender = useCallback(_renderCountryList, [
@@ -48,18 +46,7 @@ const SelectCountry = React.memo(({ countries }) => {
 
   return (
     <>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="countries-list">Select a country</InputLabel>
-        <Select
-          MenuProps={{ disableScrollLock: true }}
-          value={value}
-          onChange={handleChange}
-          //   defaultValue={countries.selected}
-        >
-          {memoizedCountryListRender()}
-          {/* {_renderCountryList()} */}
-        </Select>
-      </FormControl>
+      {memoizedCountryListRender()}
 
       <Typography
         variant="h6"

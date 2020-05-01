@@ -8,14 +8,14 @@ const initialState = {
 const countriesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case INIT_COUNTRY_LIST:
-      const list = payload.map(({ country, countryInfo: { flag } }) => ({
-        country,
-        flag,
+      const list = payload.map(({ country }) => ({
+        value: country,
+        label: country,
       }));
 
-      list.push({
-        country: 'Global',
-        flag: 'https://corona.lmao.ninja/assets/img/flags/unknown.png',
+      list.unshift({
+        value: 'Global',
+        label: 'Global',
       });
 
       console.log('[INIT_COUNTRY_LIST] : ', list);
