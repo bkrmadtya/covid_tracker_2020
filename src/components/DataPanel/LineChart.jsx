@@ -1,105 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
-import { Card } from '@material-ui/core';
+import React from 'react';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
-import DataService from 'services/DataServices';
+import { Card } from '@material-ui/core';
 
 import colors from 'styles/colors';
 
-const createDataSet = (data) => {
-  const newDataSet = { datasets: [] };
-
-  newDataSet.labels = [...Object.keys(data.cases)];
-
-  ['cases', 'recovered', 'deaths'].forEach((i) => {
-    const color = colors[i];
-    newDataSet.datasets.push({
-      label: i.charAt(0).toUpperCase() + i.slice(1),
-      data: [...Object.values(data[i])],
-      fill: false,
-      backgroundColor: color,
-      lineTension: 0.1,
-      borderColor: color,
-    });
-  });
-
-  return newDataSet;
-};
-
 const options = {
-  responsive: true,
+  chart: {
+    type: 'spline',
+  },
   title: {
-    display: true,
-    text: 'Covid 19 Global Data',
-  },
-  tooltips: {
-    mode: 'index',
-    intersect: false,
-  },
-  hover: {
-    mode: 'nearest',
-    intersect: true,
-  },
-  legend: {
-    display: true,
-    labels: {
-      boxWidth: 10,
-      usePointStyle: true,
+    text: 'Global Covid 19 cases',
+    style: {
+      fontSize: 14,
+      fontWeight: 700,
     },
   },
-  scales: {
-    xAxes: [
-      {
-        display: true,
-        scaleLabel: {
-          display: true,
-          labelString: 'Date',
-        },
-      },
-    ],
-    yAxes: [
-      {
-        display: true,
-        ticks: {
-          callback: (label) => {
-            let newLabel = label / 1000;
-
-            if (newLabel > 1) {
-              return newLabel + 'k';
-            }
-
-            return label;
-          },
-        },
-        scaleLabel: {
-          display: true,
-          labelString: 'No. of cases (in thousand)',
-        },
-      },
-    ],
+  xAxis: {
+    title: {
+      text: 'Date',
+    },
   },
+  yAxis: {
+    title: {
+      text: 'No. of cases',
+    },
+  },
+
+  series: [
+    {
+      name: 'data 1',
+      data: [1, 2, 1, 4, 3, 6],
+      color: '#FF0000',
+    },
+    {
+      name: 'Data 2',
+      data: [12, 22, 12, 42, 32, 62],
+    },
+  ],
 };
 
 const WeeklyChart = () => {
-  const [data, setData] = useState();
-
-  const _getData = async () => {
-    const data = await DataService.getWeeklyData();
-    setData(data);
-  };
-
-  useEffect(() => {
-    _getData();
-  }, []);
-
-  if (!data) return null;
-
-  const dataSet = createDataSet(data);
-  console.log(dataSet);
-
   return (
     <Card elevation={4} style={{}}>
-      <Line data={dataSet} options={options} />
+      <HighchartsReact highcharts={Highcharts} options={options} />
     </Card>
   );
 };

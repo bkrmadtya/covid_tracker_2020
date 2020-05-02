@@ -4,10 +4,9 @@ import { Container, Grid, Toolbar, makeStyles, Box } from '@material-ui/core';
 
 import 'App.css';
 
+import DataPanel from 'components/DataPanel/DataPanel';
 import NavBar from 'components/utils/NavBar';
 import MapView from 'components/Map/MapView';
-import LineChart from 'components/DataPanel/LineChart';
-import DataPanel from 'components/DataPanel/DataPanel';
 
 import { getInitialData } from 'store/actions/dataActions';
 import { getDataByCountry } from 'store/actions/countriesActions';
