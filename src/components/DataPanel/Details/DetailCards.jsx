@@ -4,6 +4,8 @@ import { Grid } from '@material-ui/core';
 
 import SingleCard from './SingleCard';
 
+import colors from 'styles/colors';
+
 const DetailCards = ({ data }) => {
   if (!data) return null;
 
@@ -16,18 +18,22 @@ const DetailCards = ({ data }) => {
           title="Total cases"
           number={cases}
           today={todayCases}
-          color="rgb(222, 55, 0,0.5)"
+          color={colors.cases}
         />
       </Grid>
       <Grid item xs={4}>
-        <SingleCard title="Recovered" number={recovered} color="#21ba45" />
+        <SingleCard
+          title="Recovered"
+          number={recovered}
+          color={colors.recovered}
+        />
       </Grid>
       <Grid item xs={4}>
         <SingleCard
           title="Deaths"
           number={deaths}
           today={todayDeaths}
-          color="grey"
+          color={colors.deaths}
         />
       </Grid>
     </Grid>

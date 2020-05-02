@@ -4,16 +4,12 @@ import { Card } from '@material-ui/core';
 
 import DataService from 'services/DataServices';
 
+import colors from 'styles/colors';
+
 const createDataSet = (data) => {
   const newDataSet = { datasets: [] };
 
   newDataSet.labels = [...Object.keys(data.cases)];
-
-  const colors = {
-    cases: 'rgb(222, 55, 0,0.5)',
-    recovered: '#21ba45',
-    deaths: 'grey',
-  };
 
   ['cases', 'recovered', 'deaths'].forEach((i) => {
     const color = colors[i];
