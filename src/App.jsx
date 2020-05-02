@@ -47,7 +47,6 @@ function App({ getInitialData, getDataByCountry }) {
             </Grid>
             <Grid item xs={4}>
               <DataPanel />
-              <LineChart />
             </Grid>
           </Grid>
         </Box>

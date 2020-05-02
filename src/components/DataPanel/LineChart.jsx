@@ -102,7 +102,7 @@ const WeeklyChart = () => {
   console.log(dataSet);
 
   return (
-    <Card elevation={4}>
+    <Card elevation={4} style={{}}>
       <Line data={dataSet} options={options} />
     </Card>
   );

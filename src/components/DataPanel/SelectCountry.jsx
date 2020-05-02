@@ -28,7 +28,7 @@ const SelectCountry = React.memo(({ countries, getDataByCountry }) => {
 
       <Typography
         variant="h6"
-        style={{ margin: '10px 0', textAlign: 'center' }}
+        style={{ marginTop: '10px', textAlign: 'center' }}
       >
         {countries.selected.value}
       </Typography>
