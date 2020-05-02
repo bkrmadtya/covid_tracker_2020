@@ -1,58 +1,36 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import Select from 'react-select';
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    // margin: theme.spacing(1),
-    // minWidth: 120,
-    width: '100%',
-  },
-  selectEmpty: {
-    // marginTop: theme.spacing(2),
-  },
-}));
+import { getDataByCountry } from 'store/actions/countriesActions';
 
-const SelectCountry = React.memo(({ countries }) => {
-  const classes = useStyles();
-  const [value, setValue] = React.useState('');
-
+const SelectCountry = React.memo(({ countries, getDataByCountry }) => {
   const handleChange = (data) => {
-    setValue(data.value);
-    console.log(data.value);
+    getDataByCountry(data.value);
   };
 
-  const _renderCountryList = () => {
-    return (
-      <Select
-        options={countries.list}
-        defaultValue={countries.list[0]}
-        isSearchable={true}
-        onChange={handleChange}
-      />
-    );
-  };
+  if (!countries.list || !countries.selected) return null;
 
-  const memoizedCountryListRender = useCallback(_renderCountryList, [
-    _renderCountryList,
-  ]);
+  const { value, label } = countries.selected;
 
   return (
     <>
-      {memoizedCountryListRender()}
+      <Select
+        options={countries.list}
+        defaultValue={{
+          value,
+          label,
+        }}
+        isSearchable={true}
+        onChange={handleChange}
+      />
 
       <Typography
         variant="h6"
         style={{ margin: '10px 0', textAlign: 'center' }}
       >
-        {value}
+        {countries.selected.value}
       </Typography>
     </>
   );
@@ -64,4 +42,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(SelectCountry);
+export default connect(mapStateToProps, { getDataByCountry })(SelectCountry);

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Container, Grid, Toolbar, makeStyles, Box } from '@material-ui/core';
 
 import 'App.css';
@@ -9,7 +10,7 @@ import LineChart from 'components/DataPanel/LineChart';
 import DataPanel from 'components/DataPanel/DataPanel';
 
 import { getInitialData } from 'store/actions/dataActions';
-import { connect } from 'react-redux';
+import { getDataByCountry } from 'store/actions/countriesActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,10 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App({ getInitialData }) {
+function App({ getInitialData, getDataByCountry }) {
   useEffect(() => {
     getInitialData();
-  }, [getInitialData]);
+    getDataByCountry('Global');
+  }, [getDataByCountry, getInitialData]);
 
   const classes = useStyles();
   return (
@@ -54,4 +56,4 @@ function App({ getInitialData }) {
   );
 }
 
-export default connect(null, { getInitialData })(App);
+export default connect(null, { getInitialData, getDataByCountry })(App);

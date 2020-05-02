@@ -1,8 +1,8 @@
-import { INIT_COUNTRY_LIST } from 'store/actions/actionTypes';
+import { INIT_COUNTRY_LIST, SELECT_COUNTRY } from 'store/actions/actionTypes';
 
 const initialState = {
   list: [],
-  selected: 'Global',
+  selected: { value: 'Global', label: 'Global' },
 };
 
 const countriesReducer = (state = initialState, { type, payload }) => {
@@ -18,8 +18,10 @@ const countriesReducer = (state = initialState, { type, payload }) => {
         label: 'Global',
       });
 
-      console.log('[INIT_COUNTRY_LIST] : ', list);
       return { ...state, list };
+
+    case SELECT_COUNTRY:
+      return { ...state, selected: payload };
     default:
       return state;
   }

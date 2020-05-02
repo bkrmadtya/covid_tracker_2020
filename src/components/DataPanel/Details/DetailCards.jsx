@@ -1,9 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 
 import SingleCard from './SingleCard';
 
 const DetailCards = ({ data }) => {
+  if (!data) return null;
+
   const { cases, todayCases, deaths, todayDeaths, recovered } = data;
 
   return (
@@ -31,4 +34,8 @@ const DetailCards = ({ data }) => {
   );
 };
 
-export default DetailCards;
+const mapStateToProps = (state) => ({
+  data: state.countries.selected.data,
+});
+
+export default connect(mapStateToProps)(DetailCards);
