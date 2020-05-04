@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   root: {
     flex: 1,
     height: '100%',
-    minHeight: '500px',
+    minHeight: '300px',
   },
   map: {
     width: '100%',
@@ -61,7 +61,6 @@ const MapView = ({ datas }) => {
         longitude={0}
         mapStyle="mapbox://styles/mapbox/dark-v10"
         onViewportChange={(viewport) => {}}
-        onHover={() => console.log('hovered')}
         visibility={{
           labels: false,
         }}

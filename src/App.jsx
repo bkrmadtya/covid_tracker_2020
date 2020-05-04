@@ -33,8 +33,8 @@ function App({ getInitialData, getDataByCountry }) {
   const classes = useStyles();
   return (
     <>
-      <NavBar />
-      <Toolbar />
+      {/* <NavBar />
+      <Toolbar /> */}
       <Container maxWidth="xl">
         <Box my={2} className={classes.root}>
           <Grid
