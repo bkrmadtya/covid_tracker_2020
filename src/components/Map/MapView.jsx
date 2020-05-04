@@ -20,6 +20,11 @@ const useStyles = makeStyles({
     height: '100%',
     minHeight: '500px',
   },
+  map: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 5,
+  },
 });
 
 const MapView = ({ datas }) => {
@@ -49,26 +54,23 @@ const MapView = ({ datas }) => {
   return (
     <Card className={classes.root} elevation={4}>
       <MapGL
-        style={{
-          width: '100%',
-          height: '100%',
-          borderRadius: 5,
-        }}
         accessToken={MAPBOX_TOKEN}
-        mapStyle="mapbox://styles/mapbox/dark-v10"
+        className={classes.map}
+        dragRotate={false}
         latitude={20}
         longitude={0}
-        zoom={0.5}
+        mapStyle="mapbox://styles/mapbox/dark-v10"
         onViewportChange={(viewport) => {}}
         onHover={() => console.log('hovered')}
         visibility={{
           labels: false,
         }}
+        zoom={0.5}
       >
         {datas.map((country) => (
           <CircleMarker
-            key={country.country}
             country={country}
+            key={country.country}
             hoveredCountry={hoveredCountry}
             onHover={_onHover}
             onLeave={_onLeave}

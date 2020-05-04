@@ -11,7 +11,6 @@ import {
   Typography,
   makeStyles,
 } from '@material-ui/core';
-import { Folder as FolderIcon } from '@material-ui/icons';
 
 import colors from 'styles/colors';
 

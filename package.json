@@ -26,6 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "rm -rf build && npm run build && netlify deploy",
     "test": "react-scripts test",
     "eject": "NODE_PATH=src/ react-scripts eject"
   },
