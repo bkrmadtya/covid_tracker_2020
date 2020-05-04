@@ -31,23 +31,23 @@ const SingleCard = ({ title, number, today, color }) => {
     <Card elevation={4} className={classes.root} style={style}>
       <CardContent classes={{ root: classes.cardContent }}>
         <Typography variant="subtitle1">{title}</Typography>
-        {number ? (
+        {(number >= 0) ? (
           <>
             <Typography variant="h6" style={{ color }}>
               {number}
             </Typography>
 
-            {today && today !== 0 ? (
+            {(today > 0) &&
               <Chip
                 className={classes.chip}
                 label={`+ ${today}`}
                 size="small"
               />
-            ) : null}
+            }
           </>
         ) : (
-          <CircularProgress style={{ color }} />
-        )}
+            <CircularProgress style={{ color }} />
+          )}
       </CardContent>
     </Card>
   );

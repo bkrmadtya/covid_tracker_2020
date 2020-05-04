@@ -18,10 +18,7 @@ const SelectCountry = React.memo(({ countries, getDataByCountry }) => {
     <>
       <Select
         options={countries.list}
-        defaultValue={{
-          value,
-          label,
-        }}
+        placeholder="Select a country"
         isSearchable={true}
         onChange={handleChange}
       />

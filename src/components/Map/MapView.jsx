@@ -4,7 +4,7 @@ import MapGL, {
   NavigationControl,
   FullscreenControl,
 } from '@urbica/react-map-gl';
-import { Card } from '@material-ui/core';
+import { Card, makeStyles } from '@material-ui/core';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import CircleMarker from './CircleMarker';
@@ -14,7 +14,16 @@ import DataService from 'services/DataServices';
 const MAPBOX_TOKEN =
   'pk.eyJ1IjoiYmtybWFkdHlhIiwiYSI6ImNrOHN2bnAyNzBsdHgzc3FhYXVwczNndmcifQ.ywNlS9BxkO7FS-sYn1cMKw';
 
+const useStyles = makeStyles({
+  root: {
+    flex: 1,
+    height: '100%',
+    minHeight: '500px',
+  },
+});
+
 const MapView = ({ datas }) => {
+  const classes = useStyles();
   const [data, setData] = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState();
 
@@ -38,7 +47,7 @@ const MapView = ({ datas }) => {
   if (!data) return null;
 
   return (
-    <Card elevation={4} style={{ height: '100%' }}>
+    <Card className={classes.root} elevation={4}>
       <MapGL
         style={{
           width: '100%',
@@ -68,7 +77,7 @@ const MapView = ({ datas }) => {
 
         <NavigationControl showZoom position="bottom-right" />
 
-        <FullscreenControl position="top-right" />
+        {/* <FullscreenControl position="top-right" /> */}
       </MapGL>
     </Card>
   );

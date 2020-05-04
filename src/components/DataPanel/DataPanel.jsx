@@ -1,22 +1,36 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 
 import DetailCards from 'components/DataPanel/Details/DetailCards';
-import LineChart from 'components/DataPanel/LineChart';
+import DetailBoard from 'components/DataPanel/Details/DetailBoard';
 
 import SelectCountry from './SelectCountry';
 
+const useStyles = makeStyles({
+  root: {
+    // height: '100%',
+    flex: 1,
+  },
+});
+
 const DataPanel = () => {
+  const classes = useStyles();
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
+    <Grid
+      className={classes.root}
+      container
+      direction="column"
+      justify="space-between"
+      spacing={3}
+    >
+      <Grid item>
         <SelectCountry />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item>
         <DetailCards />
       </Grid>
-      <Grid item xs={12}>
-        <LineChart />
+      <Grid item>
+        <DetailBoard />
       </Grid>
     </Grid>
   );

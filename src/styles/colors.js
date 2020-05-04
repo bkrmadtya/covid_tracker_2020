@@ -3,4 +3,5 @@ export default {
   cases: 'rgb(222, 55, 0,0.5)',
   deaths: 'grey',
   recovered: '#21ba45',
+  details: "#3262a8"
 };
