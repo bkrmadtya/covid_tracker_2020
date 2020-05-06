@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     flexGrow: 1,
-    height: '90vh',
+    height: '95vh',
   },
   items: {
     flexGrow: 1,
@@ -44,10 +44,10 @@ function App({ getInitialData, getDataByCountry }) {
             spacing={3}
             alignItems="stretch"
           >
-            <Grid className={classes.items} item xs={12} sm={8}>
+            <Grid className={classes.items} item sm={12} md={8}>
               <MapView />
             </Grid>
-            <Grid className={classes.items} item xs={12} sm={4}>
+            <Grid className={classes.items} item sm={12} md={4}>
               <DataPanel />
             </Grid>
           </Grid>

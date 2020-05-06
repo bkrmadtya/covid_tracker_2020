@@ -8,8 +8,8 @@ import SelectCountry from './SelectCountry';
 
 const useStyles = makeStyles({
   root: {
-    // height: '100%',
     flex: 1,
+    height: '100%',
   },
 });
 
@@ -21,7 +21,6 @@ const DataPanel = () => {
       container
       direction="column"
       justify="space-between"
-      spacing={3}
     >
       <Grid item>
         <SelectCountry />

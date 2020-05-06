@@ -23,7 +23,6 @@ const useStyles = makeStyles({
   map: {
     width: '100%',
     height: '100%',
-    borderRadius: 5,
   },
 });
 
@@ -39,6 +38,7 @@ const MapView = ({ datas }) => {
 
   useEffect(() => {
     _fetchData();
+    console.log(classes);
   }, []);
 
   const _onHover = (country) => {
@@ -61,9 +61,6 @@ const MapView = ({ datas }) => {
         longitude={0}
         mapStyle="mapbox://styles/mapbox/dark-v10"
         onViewportChange={(viewport) => {}}
-        visibility={{
-          labels: false,
-        }}
         zoom={0.5}
       >
         {datas.map((country) => (

@@ -17,6 +17,9 @@ import colors from 'styles/colors';
 const rows = {
   active: 'Active',
   // affectedCountries: 'No. of affected countries',
+  country: 'Country',
+  continent: 'Continent',
+  flag: 'Flag',
   critical: 'Critical',
   casesPerOneMillion: 'Cases per 1 million',
   deathsPerOneMillion: 'Deaths per 1 million',
@@ -41,13 +44,12 @@ const DetailCards = ({ data }) => {
 
   if (!data) return null;
 
+  if (data.hasOwnProperty('country')) {
+    console.log('mOIKKA');
+  }
+
   return (
-    <TableContainer
-      className={classes.root}
-      component={Paper}
-      elevation={4}
-      style={{}}
-    >
+    <TableContainer className={classes.root} component={Paper} elevation={4}>
       <Table>
         <TableHead>
           <TableRow style={{ width: '100%' }}>
