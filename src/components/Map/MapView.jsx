@@ -9,8 +9,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import CircleMarker from './CircleMarker';
 
-import DataService from 'services/DataServices';
-
 const MAPBOX_TOKEN =
   'pk.eyJ1IjoiYmtybWFkdHlhIiwiYSI6ImNrOHN2bnAyNzBsdHgzc3FhYXVwczNndmcifQ.ywNlS9BxkO7FS-sYn1cMKw';
 
@@ -26,43 +24,62 @@ const useStyles = makeStyles({
   },
 });
 
-const MapView = ({ datas }) => {
-  const classes = useStyles();
-  const [data, setData] = useState([]);
-  const [hoveredCountry, setHoveredCountry] = useState();
+const viewPortSettings = {
+  zoom: 1,
+  dragRotate: false,
+  latitude: 20,
+  longitude: 0,
+  viewportChangeMethod: 'flyTo',
+  viewportChangeOptions: { duration: 1500 },
+};
 
-  const _fetchData = async () => {
-    const data = await DataService.getGlobalData();
-    setData(data);
-  };
+const MapView = ({ datas, selectedCountry }) => {
+  const classes = useStyles();
+  const [hoveredCountry, setHoveredCountry] = useState();
+  const [viewPort, setViewPort] = useState(viewPortSettings);
 
   useEffect(() => {
-    _fetchData();
+    if (selectedCountry.value !== 'Global') {
+      const {
+        details: {
+          countryInfo: { lat, long },
+        },
+      } = selectedCountry;
 
-    return _fetchData;
-  }, []);
+      _changeViewPort(lat, long, 4);
+    } else {
+      const { latitude, longitude, zoom } = viewPortSettings;
+      _changeViewPort(latitude, longitude, zoom);
+    }
+  }, [selectedCountry]);
 
-  const _onHover = (country) => {
-    setHoveredCountry(country.country);
+  const _changeViewPort = (lat, lng, zoom) => {
+    const newViewPort = {
+      ...viewPort,
+      latitude: lat,
+      longitude: lng,
+      zoom,
+    };
+
+    setViewPort(newViewPort);
+  };
+
+  const _onHover = ({ country }) => {
+    setHoveredCountry(country);
   };
 
   const _onLeave = () => {
     setHoveredCountry();
   };
 
-  if (!data) return null;
-
   return (
     <Card className={classes.root} elevation={4}>
       <MapGL
         accessToken={MAPBOX_TOKEN}
         className={classes.map}
-        dragRotate={false}
-        latitude={20}
-        longitude={0}
         mapStyle="mapbox://styles/mapbox/dark-v10"
         onViewportChange={(viewport) => {}}
-        zoom={0.5}
+        {...viewPort}
       >
         {datas.map((country) => (
           <CircleMarker
@@ -85,6 +102,7 @@ const MapView = ({ datas }) => {
 const mapStateToProps = (state) => {
   return {
     datas: state.data,
+    selectedCountry: state.countries.selected,
   };
 };
 
