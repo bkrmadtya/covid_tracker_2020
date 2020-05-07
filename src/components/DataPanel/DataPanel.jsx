@@ -4,7 +4,7 @@ import { Grid, makeStyles } from '@material-ui/core';
 import DetailCards from 'components/DataPanel/Details/DetailCards';
 import DetailBoard from 'components/DataPanel/Details/DetailBoard';
 
-import SelectCountry from './SelectCountry';
+import SelectedCountry from './SelectedCountry';
 
 const useStyles = makeStyles({
   root: {
@@ -23,7 +23,7 @@ const DataPanel = () => {
       // justify="space-between"
     >
       <Grid item>
-        <SelectCountry />
+        <SelectedCountry />
       </Grid>
       <Grid item>
         <DetailCards />
