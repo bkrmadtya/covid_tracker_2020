@@ -12,6 +12,8 @@ import CircleMarker from './CircleMarker';
 const MAPBOX_TOKEN =
   'pk.eyJ1IjoiYmtybWFkdHlhIiwiYSI6ImNrOHN2bnAyNzBsdHgzc3FhYXVwczNndmcifQ.ywNlS9BxkO7FS-sYn1cMKw';
 
+const mapStyle = 'mapbox://styles/mapbox/light-v8';
+
 const useStyles = makeStyles({
   root: {
     flex: 1,
@@ -77,7 +79,7 @@ const MapView = ({ datas, selectedCountry }) => {
       <MapGL
         accessToken={MAPBOX_TOKEN}
         className={classes.map}
-        mapStyle="mapbox://styles/mapbox/light-v8"
+        mapStyle={mapStyle}
         onViewportChange={(viewport) => {}}
         {...viewPort}
       >
