@@ -77,7 +77,7 @@ const MapView = ({ datas, selectedCountry }) => {
       <MapGL
         accessToken={MAPBOX_TOKEN}
         className={classes.map}
-        mapStyle="mapbox://styles/mapbox/dark-v10"
+        mapStyle="mapbox://styles/mapbox/light-v8"
         onViewportChange={(viewport) => {}}
         {...viewPort}
       >

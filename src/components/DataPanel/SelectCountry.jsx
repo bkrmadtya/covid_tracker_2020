@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Avatar, Chip, Icon, makeStyles, Typography } from '@material-ui/core';
+import { Avatar, Card, Icon, makeStyles, Typography } from '@material-ui/core';
 import Select from 'react-select';
 
 import { getDataByCountry } from 'store/actions/countriesActions';
@@ -10,21 +10,24 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   continent: {
-    marginBottom: '10px',
+    marginBottom: '15px',
     textAlign: 'center',
   },
   flag: {
-    width: theme.spacing(3),
+    display: 'block',
     height: theme.spacing(3),
-    margin: '0 auto',
+    margin: '5px auto',
+    padding: 2,
+    boxShadow:
+      '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
   },
 }));
 
 const computeMargin = (ifContinent) => {
-  let margin = 10;
+  let margin = 15;
 
   if (ifContinent) {
-    margin = '10px 0 0 0';
+    margin = '15px 0 0 0';
   }
 
   return margin;
@@ -54,14 +57,16 @@ const SelectCountry = React.memo(({ countries, getDataByCountry }) => {
         variant="h6"
       >
         {value}
-        {details?.countryInfo?.flag && (
-          <Avatar
-            className={classes.flag}
-            variant="rounded"
-            src={details?.countryInfo?.flag}
-          ></Avatar>
-        )}
       </Typography>
+
+      {details?.countryInfo?.flag && (
+        <img
+          className={classes.flag}
+          variant="square"
+          src={details?.countryInfo?.flag}
+        />
+      )}
+
       {details?.continent && (
         <Typography className={classes.continent} variant="subtitle1">
           {details.continent}
