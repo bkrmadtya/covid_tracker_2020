@@ -7,18 +7,19 @@ import { getDataByCountry } from 'store/actions/countriesActions';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
-    marginTop: '10px',
-    marginBottom: '10px',
+    marginTop: '15px',
+    marginBottom: '15px',
   },
   selectedCountry: {
     textAlign: 'center',
   },
   continent: {
     textAlign: 'center',
+    margin: '-5px 0',
   },
   flag: {
     display: 'block',
-    height: theme.spacing(5),
+    height: theme.spacing(7),
     margin: '0px auto',
     padding: 2,
     boxShadow:
@@ -55,7 +56,12 @@ const SelectedCountry = React.memo(({ countries, getDataByCountry }) => {
         placeholder="Select a country"
       />
 
-      <Grid className={classes.grid} container direction="column">
+      <Grid
+        className={classes.grid}
+        container
+        direction="column"
+        alignContent="center"
+      >
         <Grid item>
           {details?.countryInfo?.flag && (
             <img

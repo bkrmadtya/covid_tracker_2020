@@ -18,6 +18,7 @@ const useStyles = makeStyles({
       padding: 8,
     },
   },
+  number: { margin: '-5px 0' },
   chip: {
     marginTop: '0.5em',
     width: 70,
@@ -31,12 +32,17 @@ const SingleCard = ({ title, number, today, color }) => {
   return (
     <Card elevation={4} className={classes.root} style={style}>
       <CardContent classes={{ root: classes.cardContent }}>
-        <Typography variant="subtitle1" component="p">
+        <Typography component="p" variant="subtitle1">
           {title}
         </Typography>
         {number >= 0 ? (
           <>
-            <Typography variant="h6" component="p" style={{ color }}>
+            <Typography
+              className={classes.number}
+              component="p"
+              variant="h6"
+              style={{ color }}
+            >
               {number}
             </Typography>
 
