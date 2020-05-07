@@ -37,9 +37,8 @@ const callEveryFiveMinutes = (func1, func2) => {
 
 const App = React.memo(({ getInitialData, getDataByCountry }) => {
   useEffect(() => {
-    if (getDataByCountry && getInitialData) {
-      callEveryFiveMinutes(getInitialData, getDataByCountry);
-    }
+    callEveryFiveMinutes(getInitialData, getDataByCountry);
+
     return callEveryFiveMinutes;
   }, [callEveryFiveMinutes]);
 

@@ -59,11 +59,13 @@ const DetailCards = ({ data }) => {
         <TableBody>
           {Object.keys(rows).map((key) => (
             <TableRow key={key}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" variant="head">
                 {rows[key]}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {data[key]}
+                {key === 'updated'
+                  ? new Date(data[key]).toLocaleTimeString()
+                  : data[key]}
               </TableCell>
             </TableRow>
           ))}

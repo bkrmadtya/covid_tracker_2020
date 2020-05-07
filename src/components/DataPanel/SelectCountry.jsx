@@ -5,7 +5,7 @@ import Select from 'react-select';
 
 import { getDataByCountry } from 'store/actions/countriesActions';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   selectedCountry: {
     textAlign: 'center',
   },
@@ -13,7 +13,12 @@ const useStyles = makeStyles({
     marginBottom: '10px',
     textAlign: 'center',
   },
-});
+  flag: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+    margin: '0 auto',
+  },
+}));
 
 const computeMargin = (ifContinent) => {
   let margin = 10;
@@ -49,6 +54,13 @@ const SelectCountry = React.memo(({ countries, getDataByCountry }) => {
         variant="h6"
       >
         {value}
+        {details?.countryInfo?.flag && (
+          <Avatar
+            className={classes.flag}
+            variant="rounded"
+            src={details?.countryInfo?.flag}
+          ></Avatar>
+        )}
       </Typography>
       {details?.continent && (
         <Typography className={classes.continent} variant="subtitle1">
