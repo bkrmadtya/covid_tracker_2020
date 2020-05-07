@@ -17,16 +17,16 @@ import colors from 'styles/colors';
 const rows = {
   active: 'Active',
   // affectedCountries: 'No. of affected countries',
-  country: 'Country',
-  continent: 'Continent',
-  flag: 'Flag',
+  // country: 'Country',
+  // continent: 'Continent',
+  // flag: 'Flag',
   critical: 'Critical',
   casesPerOneMillion: 'Cases per 1 million',
   deathsPerOneMillion: 'Deaths per 1 million',
   tests: 'Tests',
   testsPerOneMillion: 'Tests per 1 million',
   todayCases: 'Today cases',
-  updated: 'Updated',
+  updated: 'Updated At',
 };
 
 const useStyles = makeStyles({
@@ -42,11 +42,9 @@ const useStyles = makeStyles({
 const DetailCards = ({ data }) => {
   const classes = useStyles();
 
-  if (!data) return null;
+  console.log(data);
 
-  if (data.hasOwnProperty('country')) {
-    console.log('mOIKKA');
-  }
+  if (!data) return null;
 
   return (
     <TableContainer className={classes.root} component={Paper} elevation={4}>
@@ -76,7 +74,7 @@ const DetailCards = ({ data }) => {
 };
 
 const mapStateToProps = (state) => ({
-  data: state.countries.selected.data,
+  data: state.countries.selected.details,
 });
 
 export default connect(mapStateToProps)(DetailCards);

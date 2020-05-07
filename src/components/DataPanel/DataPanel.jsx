@@ -20,7 +20,7 @@ const DataPanel = () => {
       className={classes.root}
       container
       direction="column"
-      justify="space-between"
+      // justify="space-between"
     >
       <Grid item>
         <SelectCountry />

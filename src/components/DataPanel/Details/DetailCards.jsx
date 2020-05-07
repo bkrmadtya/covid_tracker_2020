@@ -6,10 +6,10 @@ import SingleCard from './SingleCard';
 
 import colors from 'styles/colors';
 
-const DetailCards = ({ data }) => {
-  if (!data) return null;
+const DetailCards = ({ details }) => {
+  if (!details) return null;
 
-  const { cases, todayCases, deaths, todayDeaths, recovered } = data;
+  const { cases, todayCases, deaths, todayDeaths, recovered } = details;
 
   return (
     <Grid container spacing={2}>
@@ -41,7 +41,7 @@ const DetailCards = ({ data }) => {
 };
 
 const mapStateToProps = (state) => ({
-  data: state.countries.selected.data,
+  details: state.countries.selected.details,
 });
 
 export default connect(mapStateToProps)(DetailCards);

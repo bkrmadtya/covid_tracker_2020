@@ -8,18 +8,7 @@ const initialState = {
 const countriesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case INIT_COUNTRY_LIST:
-      const list = payload.map(({ country }) => ({
-        value: country,
-        label: country,
-      }));
-
-      list.unshift({
-        value: 'Global',
-        label: 'Global',
-      });
-
-      return { ...state, list };
-
+      return { ...state, list: [...payload] };
     case SELECT_COUNTRY:
       return { ...state, selected: payload };
     default:

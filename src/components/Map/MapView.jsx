@@ -38,7 +38,8 @@ const MapView = ({ datas }) => {
 
   useEffect(() => {
     _fetchData();
-    console.log(classes);
+
+    return _fetchData;
   }, []);
 
   const _onHover = (country) => {
