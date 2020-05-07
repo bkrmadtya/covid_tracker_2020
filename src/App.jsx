@@ -45,8 +45,8 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
   const classes = useStyles();
   return (
     <>
-      {/* <NavBar />
-      <Toolbar /> */}
+      <NavBar />
+      <Toolbar variant="dense" />
       <Container maxWidth="xl">
         <Box my={2} className={classes.root}>
           <Grid className={classes.grid} container spacing={3}>
