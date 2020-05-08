@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Container, Grid, Toolbar, makeStyles, Box } from '@material-ui/core';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Container, Toolbar, makeStyles, Box } from '@material-ui/core';
 import 'App.css';
 
-import DataPanel from 'components/DataPanel/DataPanel';
+import Charts from 'components/Charts';
+import MapAndData from 'components/MapAndData';
 import NavBar from 'components/utils/NavBar';
-import MapView from 'components/Map/MapView';
 
 import { getInitialData } from 'store/actions/dataActions';
 import { getDataByCountry } from 'store/actions/countriesActions';
@@ -15,13 +15,6 @@ import LocalStorage from 'services/LocalStorageServices';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-  },
-  grid: {
-    flexGrow: 1,
-    height: '850px',
-  },
-  items: {
     flexGrow: 1,
   },
 }));
@@ -45,20 +38,16 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
   const classes = useStyles();
   return (
     <>
-      <NavBar />
-      <Toolbar variant="dense" />
-      <Container maxWidth="xl">
-        <Box my={2} className={classes.root}>
-          <Grid className={classes.grid} container spacing={3}>
-            <Grid className={classes.items} item xs={12} lg={8}>
-              <MapView />
-            </Grid>
-            <Grid className={classes.items} item xs={12} lg={4}>
-              <DataPanel />
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
+      <Router>
+        <NavBar />
+        <Toolbar variant="dense" />
+        <Container maxWidth="xl">
+          <Box my={2} className={classes.root}>
+            <Route exact component={Charts} path="/charts" />
+            <Route exact component={MapAndData} path="/" />
+          </Box>
+        </Container>
+      </Router>
     </>
   );
 });

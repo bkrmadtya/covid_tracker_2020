@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   AppBar,
   makeStyles,
@@ -24,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const _navigateTo = (path) => {
+    history.push(path);
+  };
   return (
     <AppBar className={classes.appBar}>
       <Toolbar variant="dense">
@@ -31,8 +37,12 @@ const NavBar = () => {
           <img className={classes.logo} src={logo} />
           Covid 19 Tracker
         </Typography>
-        <Button color="inherit">Map</Button>
-        <Button color="inherit">Charts</Button>
+        <Button color="inherit" onClick={() => _navigateTo('/')}>
+          Map
+        </Button>
+        <Button color="inherit" onClick={() => _navigateTo('/charts')}>
+          Charts
+        </Button>
       </Toolbar>
     </AppBar>
   );
