@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import MapGL, {
-  NavigationControl,
-  FullscreenControl,
-} from '@urbica/react-map-gl';
+import MapGL, { NavigationControl } from '@urbica/react-map-gl';
 import { Card, makeStyles } from '@material-ui/core';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -94,8 +91,6 @@ const MapView = ({ datas, selectedCountry }) => {
         ))}
 
         <NavigationControl showZoom position="bottom-right" />
-
-        {/* <FullscreenControl position="top-right" /> */}
       </MapGL>
     </Card>
   );

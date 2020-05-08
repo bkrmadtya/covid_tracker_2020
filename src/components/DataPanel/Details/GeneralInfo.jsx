@@ -52,7 +52,7 @@ const DetailCards = ({ data }) => {
         <TableHead>
           <TableRow style={{ width: '100%' }}>
             <TableCell colSpan={2} className={classes.title}>
-              Details
+              General Info
             </TableCell>
           </TableRow>
         </TableHead>

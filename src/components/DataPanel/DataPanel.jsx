@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 
 import DetailCards from 'components/DataPanel/Details/DetailCards';
-import DetailBoard from 'components/DataPanel/Details/DetailBoard';
+import GeneralInfo from 'components/DataPanel/Details/GeneralInfo';
 
 import SelectedCountry from './SelectedCountry';
 
@@ -29,7 +29,7 @@ const DataPanel = () => {
         <DetailCards />
       </Grid>
       <Grid item>
-        <DetailBoard />
+        <GeneralInfo />
       </Grid>
     </Grid>
   );

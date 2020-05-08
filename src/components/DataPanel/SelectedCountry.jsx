@@ -7,11 +7,11 @@ import { getDataByCountry } from 'store/actions/countriesActions';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
-    marginTop: '15px',
-    marginBottom: '15px',
+    margin: '15px 0',
   },
   selectedCountry: {
     textAlign: 'center',
+    fontWeight: 600,
   },
   continent: {
     textAlign: 'center',
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   flag: {
     display: 'block',
-    height: theme.spacing(7),
+    height: theme.spacing(5),
     margin: '0px auto',
     padding: 2,
     boxShadow:
@@ -28,10 +28,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const computeMargin = (ifContinent) => {
-  let margin = 5;
+  let margin = 7;
 
   if (ifContinent) {
-    margin = '5px 0 0 0';
+    margin = '7px 0 0 0';
   }
 
   return margin;
@@ -75,7 +75,7 @@ const SelectedCountry = React.memo(({ countries, getDataByCountry }) => {
           <Typography
             className={classes.selectedCountry}
             style={{ margin: computeMargin(details?.continent) }}
-            variant="h6"
+            variant="h5"
           >
             {value}
           </Typography>

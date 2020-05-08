@@ -12,7 +12,7 @@ const DetailCards = ({ details }) => {
   const { cases, todayCases, deaths, todayDeaths, recovered } = details;
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} style={{ maring: '10px 0' }}>
       <Grid item xs={4}>
         <SingleCard
           title="Total cases"

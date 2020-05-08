@@ -18,7 +18,7 @@ const CircleMarker = ({ country, onHover, onLeave, hoveredCountry }) => {
     backgroundColor: '#de3700',
     opacity: 0.5,
     cursor: 'pointer',
-    boxShadow: isHovered && '0px 0px 0px 2px #de0b00',
+    boxShadow: isHovered && '0px 0px 0px 3px #de0b00',
   };
 
   return (

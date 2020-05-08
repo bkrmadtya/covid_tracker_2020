@@ -1,12 +1,18 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, makeStyles } from '@material-ui/core';
+import {
+  AppBar,
+  makeStyles,
+  Toolbar,
+  Typography,
+  Button,
+} from '@material-ui/core';
+import { grey } from '@material-ui/core/colors';
 
 import logo from 'styles/icons/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: 'black',
-    textAlign: 'center',
+    backgroundColor: grey[900],
   },
   logo: {
     height: theme.spacing(3),
@@ -25,6 +31,8 @@ const NavBar = () => {
           <img className={classes.logo} src={logo} />
           Covid 19 Tracker
         </Typography>
+        <Button color="inherit">Map</Button>
+        <Button color="inherit">Charts</Button>
       </Toolbar>
     </AppBar>
   );
