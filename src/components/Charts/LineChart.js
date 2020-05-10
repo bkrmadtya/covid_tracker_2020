@@ -64,7 +64,7 @@ const chartOptions = {
   yAxis: {},
 };
 
-const convertToChartOptions = (title, data) => {
+const _convertToChartOptions = (title, data) => {
   const keys = {
     cases: 'Cases',
     deaths: 'Deaths',
@@ -81,34 +81,36 @@ const convertToChartOptions = (title, data) => {
   const day = parseInt(startingDate[1]);
   const year = parseInt(startingDate[2]) === 20 ? 2020 : 2019;
 
-  chartOptions.colors = Object.keys(keys).map((i) => colors[i]);
-  chartOptions.plotOptions.series = {
+  const newOptions = { ...chartOptions };
+
+  newOptions.colors = Object.keys(keys).map((i) => colors[i]);
+  newOptions.plotOptions.series = {
     pointStart: Date.UTC(year, month, day),
     pointInterval: 24 * 3600 * 1000,
   };
-  chartOptions.series = [...series];
-  chartOptions.subtitle.text = 'Source: www.corona.lmao.ninja';
-  chartOptions.title.text = title;
+  newOptions.series = [...series];
+  newOptions.subtitle.text = 'Source: www.corona.lmao.ninja';
+  newOptions.title.text = title;
 
-  chartOptions.xAxis = {
+  newOptions.xAxis = {
     type: 'datetime',
     title: {
       text: 'Date',
     },
   };
-  chartOptions.yAxis = {
+  newOptions.yAxis = {
     title: {
       text: 'Number of cases',
     },
   };
 
-  return chartOptions;
+  return newOptions;
 };
 
 const WeeklyChart = ({ data }) => {
   if (!data) return null;
 
-  const options = convertToChartOptions('Global Covid Cases trends', data);
+  const options = _convertToChartOptions('Global Covid Cases trends', data);
 
   return (
     <Card elevation={4} style={{}}>

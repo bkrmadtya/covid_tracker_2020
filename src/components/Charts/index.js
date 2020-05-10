@@ -14,8 +14,8 @@ const Charts = ({ getGlobalTrendData }) => {
   return (
     <>
       <h1>Charts</h1>
-      <LineChart />
       <MapChart />
+      <LineChart />
     </>
   );
 };
