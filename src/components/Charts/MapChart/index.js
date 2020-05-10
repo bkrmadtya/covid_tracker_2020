@@ -75,8 +75,6 @@ const MapChart = ({ data }) => {
 
   const mapOptions = _convertDataToMapOptions(data);
 
-  console.log(mapOptions);
-
   console.log(options);
   return (
     <Card elevation={4}>

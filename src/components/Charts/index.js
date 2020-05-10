@@ -10,6 +10,7 @@ import {
 
 import LineChart from 'components/Charts/LineChart';
 import MapChart from 'components/Charts/MapChart';
+import PieChart from 'components/Charts/PieChart';
 
 import { getGlobalTrendData } from 'store/actions/dataActions';
 
@@ -35,6 +36,9 @@ const Charts = ({ getGlobalTrendData }) => {
         <Grid item>
           <Typography variant="h2">Charts and Graphs</Typography>
           <Typography variant="body1">Covid 19 cases analysis</Typography>
+        </Grid>
+        <Grid item>
+          <PieChart />
         </Grid>
         <Grid item>
           <MapChart />

@@ -1,11 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Card } from '@material-ui/core';
 
 import colors from 'styles/colors';
-
-import { connect } from 'react-redux';
 
 const chartOptions = {
   chart: {
