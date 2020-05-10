@@ -25,6 +25,7 @@ const options = {
     enabled: true,
     buttonOptions: {
       verticalAlign: 'bottom',
+      align: 'right',
     },
   },
   series: [],
@@ -78,7 +79,7 @@ const MapChart = ({ data }) => {
 
   console.log(options);
   return (
-    <Card>
+    <Card elevation={4}>
       <HighchartsReact
         options={mapOptions}
         constructorType={'mapChart'}

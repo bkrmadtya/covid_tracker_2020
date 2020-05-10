@@ -112,7 +112,7 @@ const WeeklyChart = ({ data }) => {
   const options = _convertToChartOptions('Global Covid Cases trends', data);
 
   return (
-    <Card elevation={4} style={{}}>
+    <Card elevation={4}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </Card>
   );
