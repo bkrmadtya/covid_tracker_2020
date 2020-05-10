@@ -78,7 +78,7 @@ const MapChart = ({ data }) => {
 
   console.log(options);
   return (
-    <Card style={{ margin: '20px 0' }}>
+    <Card>
       <HighchartsReact
         options={mapOptions}
         constructorType={'mapChart'}

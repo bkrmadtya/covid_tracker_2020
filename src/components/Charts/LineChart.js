@@ -1,7 +1,6 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-
 import { Card } from '@material-ui/core';
 
 import colors from 'styles/colors';
