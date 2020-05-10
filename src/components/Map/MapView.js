@@ -32,10 +32,21 @@ const viewPortSettings = {
   viewportChangeOptions: { duration: 1500 },
 };
 
-const MapView = ({ datas, selectedCountry }) => {
+const MapView = ({ data, selectedCountry }) => {
   const classes = useStyles();
   const [hoveredCountry, setHoveredCountry] = useState();
   const [viewPort, setViewPort] = useState(viewPortSettings);
+
+  const _changeViewPort = (lat, lng, zoom) => {
+    const newViewPort = {
+      ...viewPort,
+      latitude: lat,
+      longitude: lng,
+      zoom,
+    };
+
+    setViewPort(newViewPort);
+  };
 
   useEffect(() => {
     if (selectedCountry.value !== 'Global') {
@@ -52,16 +63,7 @@ const MapView = ({ datas, selectedCountry }) => {
     }
   }, [selectedCountry]);
 
-  const _changeViewPort = (lat, lng, zoom) => {
-    const newViewPort = {
-      ...viewPort,
-      latitude: lat,
-      longitude: lng,
-      zoom,
-    };
-
-    setViewPort(newViewPort);
-  };
+  if (!data) return null;
 
   const _onHover = ({ country }) => {
     setHoveredCountry(country);
@@ -80,7 +82,7 @@ const MapView = ({ datas, selectedCountry }) => {
         onViewportChange={(viewport) => {}}
         {...viewPort}
       >
-        {datas.map((country) => (
+        {data.map((country) => (
           <CircleMarker
             country={country}
             key={country.country}
@@ -98,7 +100,7 @@ const MapView = ({ datas, selectedCountry }) => {
 
 const mapStateToProps = (state) => {
   return {
-    datas: state.data.globalData,
+    data: state.data.globalData,
     selectedCountry: state.countries.selected,
   };
 };

@@ -4,7 +4,7 @@ import {
 } from 'store/actions/actionTypes';
 
 const initialState = {
-  globalData: [],
+  globalData: null,
   monthlyData: null,
 };
 

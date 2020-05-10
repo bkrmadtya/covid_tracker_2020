@@ -109,7 +109,6 @@ const WeeklyChart = ({ data }) => {
   if (!data) return null;
 
   const options = convertToChartOptions('Global Covid Cases trends', data);
-  console.log(data, options);
 
   return (
     <Card elevation={4} style={{}}>

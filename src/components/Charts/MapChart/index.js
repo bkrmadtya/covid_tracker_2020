@@ -62,7 +62,7 @@ var data = [
   ['ye', 6],
 ];
 
-const mapOptions = {
+const options = {
   title: {
     text: '',
   },
@@ -77,7 +77,6 @@ const mapOptions = {
 
   series: [
     {
-      mapData: mapDataWorld,
       name: 'Asia',
       data: data,
     },
@@ -85,11 +84,56 @@ const mapOptions = {
 };
 
 const convertDataToMapOptions = (data) => {
-  return;
+  const newOptions = { ...options };
+
+  const newData = data
+    .map((ele) => {
+      const countryISO = ele.countryInfo.iso2;
+      if (!countryISO) return null;
+      const result = [
+        ele.countryInfo.iso2.toLowerCase(),
+        ele.casesPerOneMillion,
+      ];
+
+      return result;
+    })
+    .filter((i) => i);
+
+  const plainNumbers = newData.map((i) => i[1]);
+
+  const min = Math.min(...plainNumbers);
+  const max = Math.max(...plainNumbers);
+
+  console.log(plainNumbers, min, max);
+
+  newOptions.colorAxis = {
+    min: min,
+    stops: [
+      [max / 3, '#ffff00'],
+      [max / 2, '#bfff00'],
+      [max, '	#40ff00'],
+    ],
+  };
+
+  newOptions.series = [
+    {
+      data: newData,
+      name: 'Cases Per One Million',
+      mapData: mapDataWorld,
+    },
+  ];
+
+  return newOptions;
 };
 
 const MapChart = ({ data }) => {
-  console.log(data);
+  if (!data) return null;
+
+  const mapOptions = convertDataToMapOptions(data);
+
+  console.log(mapOptions);
+
+  console.log(options);
   return (
     <>
       <div>
@@ -112,4 +156,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect()(MapChart);
+export default connect(mapStateToProps)(MapChart);
