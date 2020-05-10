@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Container, Toolbar, makeStyles, Box } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  CssBaseline,
+  Toolbar,
+  makeStyles,
+} from '@material-ui/core';
 import 'App.css';
 
 import Charts from 'components/Charts';
@@ -39,6 +45,7 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
   return (
     <>
       <Router>
+        <CssBaseline />
         <NavBar />
         <Toolbar variant="dense" />
         <Container maxWidth="xl">

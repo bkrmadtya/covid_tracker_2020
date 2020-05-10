@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, makeStyles, Typography } from '@material-ui/core';
+import { Card, Grid, makeStyles, Typography } from '@material-ui/core';
 import Select from 'react-select';
 
 import { getDataByCountry } from 'store/actions/countriesActions';
@@ -48,6 +48,7 @@ const SelectedCountry = React.memo(({ countries, getDataByCountry }) => {
   const { value, details } = countries.selected;
 
   return (
+    // <Card elevation={4} style={{ padding: 10 }}>
     <>
       <Select
         isSearchable={true}
@@ -89,6 +90,7 @@ const SelectedCountry = React.memo(({ countries, getDataByCountry }) => {
         </Grid>
       </Grid>
     </>
+    // </Card>
   );
 });
 

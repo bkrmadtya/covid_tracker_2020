@@ -15,23 +15,19 @@ import {
 import colors from 'styles/colors';
 
 const rows = {
-  active: 'Active',
+  active: 'Active cases',
   // affectedCountries: 'No. of affected countries',
-  // country: 'Country',
-  // continent: 'Continent',
-  // flag: 'Flag',
   critical: 'Critical',
   casesPerOneMillion: 'Cases per 1 million',
   deathsPerOneMillion: 'Deaths per 1 million',
-  tests: 'Tests',
+  tests: 'No. of tests',
   testsPerOneMillion: 'Tests per 1 million',
-  todayCases: 'Today cases',
   updated: 'Updated At',
 };
 
 const useStyles = makeStyles({
   root: {
-    borderTop: `5px solid ${colors.details}`,
+    // borderTop: `5px solid ${colors.details}`,
   },
   title: {
     textAlign: 'center',
@@ -48,7 +44,7 @@ const DetailCards = ({ data }) => {
 
   return (
     <TableContainer className={classes.root} component={Paper} elevation={4}>
-      <Table>
+      <Table size="small">
         <TableHead>
           <TableRow style={{ width: '100%' }}>
             <TableCell colSpan={2} className={classes.title}>
@@ -59,7 +55,7 @@ const DetailCards = ({ data }) => {
         <TableBody>
           {Object.keys(rows).map((key) => (
             <TableRow key={key}>
-              <TableCell component="th" scope="row" variant="head">
+              <TableCell component="th" scope="row" size="small" variant="head">
                 {rows[key]}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
