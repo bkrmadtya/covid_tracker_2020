@@ -1,10 +1,20 @@
-import { INIT_GLOBAL_DATA } from 'store/actions/actionTypes';
+import {
+  INIT_GLOBAL_DATA,
+  GET_GLOBAL_MONTHLY_DATA,
+} from 'store/actions/actionTypes';
 
-const dataReducer = (state = [], { type, payload }) => {
+const initialState = {
+  globalData: [],
+  monthlyData: null,
+};
+
+const dataReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case INIT_GLOBAL_DATA:
       // console.log('[INIT DATA] : ', payload);
-      return payload;
+      return { ...state, globalData: [...payload] };
+    case GET_GLOBAL_MONTHLY_DATA:
+      return { ...state, monthlyData: { ...payload } };
     default:
       return state;
   }

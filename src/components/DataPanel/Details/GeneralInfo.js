@@ -1,14 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
   makeStyles,
 } from '@material-ui/core';
 
@@ -27,7 +25,8 @@ const rows = {
 
 const useStyles = makeStyles({
   root: {
-    // borderTop: `5px solid ${colors.details}`,
+    borderTop: `5px solid ${colors.details}`,
+    borderRadius: 5,
   },
   title: {
     textAlign: 'center',
@@ -38,16 +37,14 @@ const useStyles = makeStyles({
 const DetailCards = ({ data }) => {
   const classes = useStyles();
 
-  console.log(data);
-
   if (!data) return null;
 
   return (
-    <TableContainer className={classes.root} component={Paper} elevation={4}>
+    <TableContainer className={classes.root}>
       <Table size="small">
         <TableHead>
           <TableRow style={{ width: '100%' }}>
-            <TableCell colSpan={2} className={classes.title}>
+            <TableCell size="medium" colSpan={2} className={classes.title}>
               General Info
             </TableCell>
           </TableRow>

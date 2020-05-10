@@ -98,7 +98,7 @@ const MapView = ({ datas, selectedCountry }) => {
 
 const mapStateToProps = (state) => {
   return {
-    datas: state.data,
+    datas: state.data.globalData,
     selectedCountry: state.countries.selected,
   };
 };

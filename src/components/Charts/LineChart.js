@@ -6,28 +6,18 @@ import { Card } from '@material-ui/core';
 
 import colors from 'styles/colors';
 
-const options = {
+import { connect } from 'react-redux';
+
+const chartOptions = {
   chart: {
     type: 'spline',
   },
+
   title: {
-    text: 'Solar Employment Growth by Sector, 2010-2016',
+    text: '',
   },
-
   subtitle: {
-    text: 'Source: thesolarfoundation.com',
-  },
-
-  yAxis: {
-    title: {
-      text: 'Number of Employees',
-    },
-  },
-
-  xAxis: {
-    accessibility: {
-      rangeDescription: 'Range: 2010 to 2017',
-    },
+    text: '',
   },
 
   legend: {
@@ -41,32 +31,9 @@ const options = {
       label: {
         connectorAllowed: false,
       },
-      pointStart: 2010,
+      pointStart: 1996,
     },
   },
-
-  series: [
-    {
-      name: 'Installation',
-      data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
-    },
-    {
-      name: 'Manufacturing',
-      data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434],
-    },
-    {
-      name: 'Sales & Distribution',
-      data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387],
-    },
-    {
-      name: 'Project Development',
-      data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227],
-    },
-    {
-      name: 'Other',
-      data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111],
-    },
-  ],
 
   responsive: {
     rules: [
@@ -84,9 +51,66 @@ const options = {
       },
     ],
   },
+
+  series: [],
+
+  tooltip: {
+    shared: true,
+    crosshairs: true,
+  },
+
+  xAxis: {},
+
+  yAxis: {},
 };
 
-const WeeklyChart = () => {
+const convertToChartOptions = (title, data) => {
+  const keys = {
+    cases: 'Cases',
+    deaths: 'Deaths',
+    recovered: 'Recovered',
+  };
+
+  const series = Object.keys(data).map((ele) => ({
+    name: keys[ele],
+    data: Object.values(data[ele]),
+  }));
+
+  const startingDate = Object.keys(data.cases)[0].split('/'); // fromat => mm/dd/yyy
+  const month = parseInt(startingDate[0]) - 1; // => months range from [0-11]
+  const day = parseInt(startingDate[1]);
+  const year = parseInt(startingDate[2]) === 20 ? 2020 : 2019;
+
+  chartOptions.colors = Object.keys(keys).map((i) => colors[i]);
+  chartOptions.plotOptions.series = {
+    pointStart: Date.UTC(year, month, day),
+    pointInterval: 24 * 3600 * 1000,
+  };
+  chartOptions.series = [...series];
+  chartOptions.subtitle.text = 'Source: www.corona.lmao.ninja';
+  chartOptions.title.text = title;
+
+  chartOptions.xAxis = {
+    type: 'datetime',
+    title: {
+      text: 'Date',
+    },
+  };
+  chartOptions.yAxis = {
+    title: {
+      text: 'Number of cases',
+    },
+  };
+
+  return chartOptions;
+};
+
+const WeeklyChart = ({ data }) => {
+  if (!data) return null;
+
+  const options = convertToChartOptions('Global Covid Cases trends', data);
+  console.log(data, options);
+
   return (
     <Card elevation={4} style={{}}>
       <HighchartsReact highcharts={Highcharts} options={options} />
@@ -94,4 +118,10 @@ const WeeklyChart = () => {
   );
 };
 
-export default WeeklyChart;
+const mapStateToProps = (state) => {
+  return {
+    data: state.data.monthlyData,
+  };
+};
+
+export default connect(mapStateToProps)(WeeklyChart);

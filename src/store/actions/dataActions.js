@@ -1,4 +1,8 @@
-import { INIT_GLOBAL_DATA, INIT_COUNTRY_LIST } from './actionTypes';
+import {
+  INIT_GLOBAL_DATA,
+  GET_GLOBAL_MONTHLY_DATA,
+  INIT_COUNTRY_LIST,
+} from './actionTypes';
 
 import DataServices from 'services/DataServices';
 import LocalStorage from 'services/LocalStorageServices';
@@ -35,4 +39,13 @@ export const getInitialData = () => async (dispatch) => {
   } catch (e) {
     console.log(e);
   }
+};
+
+export const getGlobalTrendData = () => async (dispatch) => {
+  const data = await DataServices.getGlobalTrendData();
+
+  dispatch({
+    type: GET_GLOBAL_MONTHLY_DATA,
+    payload: data,
+  });
 };

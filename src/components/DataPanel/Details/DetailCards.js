@@ -1,18 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 
 import SingleCard from './SingleCard';
 
 import colors from 'styles/colors';
 
+const useStyles = makeStyles({
+  root: {
+    marginBottom: '10px',
+  },
+});
+
 const DetailCards = ({ details }) => {
+  const classes = useStyles();
   if (!details) return null;
 
   const { cases, todayCases, deaths, todayDeaths, recovered } = details;
 
   return (
-    <Grid container spacing={2} style={{ maring: '10px 0' }}>
+    <Grid className={classes.root} container spacing={2}>
       <Grid item xs={4}>
         <SingleCard
           title="Total cases"

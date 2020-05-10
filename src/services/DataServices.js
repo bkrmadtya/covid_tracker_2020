@@ -30,7 +30,7 @@ const getDataByCountry = async (country) => {
   }
 };
 
-const getWeeklyData = async () => {
+const getGlobalTrendData = async () => {
   try {
     const response = await axios.get(
       'https://corona.lmao.ninja/v2/historical/all?lastdays=all'
@@ -42,4 +42,4 @@ const getWeeklyData = async () => {
   }
 };
 
-export default { getGlobalData, getWeeklyData, getDataByCountry };
+export default { getDataByCountry, getGlobalData, getGlobalTrendData };
