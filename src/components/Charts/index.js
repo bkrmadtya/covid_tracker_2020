@@ -35,7 +35,7 @@ const Charts = ({ getGlobalTrendData }) => {
       <Grid container direction="column" spacing={3}>
         <Grid item>
           <Typography variant="h2">Charts and Graphs</Typography>
-          <Typography variant="body1">Covid 19 cases analysis</Typography>
+          <Typography variant="body1">Covid 19 case analysis</Typography>
         </Grid>
         <Grid item>
           <PieChart />
