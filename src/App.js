@@ -6,8 +6,12 @@ import {
   Container,
   CssBaseline,
   Toolbar,
+  MuiThemeProvider,
+  createMuiTheme,
   makeStyles,
 } from '@material-ui/core';
+import { blueGrey } from '@material-ui/core/colors';
+
 import 'App.css';
 
 import Charts from 'components/Charts';
@@ -24,6 +28,18 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
+
+const THEME = createMuiTheme({
+  palette: {
+    background: {
+      default: blueGrey[50],
+    },
+  },
+  typography: {
+    fontFamily: ['Roboto', '"Helvetica Neue"', 'Arial'].join(','),
+    fontSize: 12,
+  },
+});
 
 const callEveryFiveMinutes = (func1, func2) => {
   func1();
@@ -43,9 +59,9 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
 
   const classes = useStyles();
   return (
-    <>
+    <MuiThemeProvider theme={THEME}>
+      <CssBaseline />
       <Router>
-        <CssBaseline />
         <NavBar />
         <Toolbar variant="dense" />
         <Container maxWidth="xl">
@@ -55,7 +71,7 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
           </Box>
         </Container>
       </Router>
-    </>
+    </MuiThemeProvider>
   );
 });
 

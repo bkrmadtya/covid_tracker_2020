@@ -6,9 +6,8 @@ import './popup.css';
 
 const useStyles = makeStyles({
   root: { width: '180px', maxWidth: 'auto', padding: 5 },
-  header: {
-    padding: '2px 0',
-    alignItems: 'center',
+  divider: {
+    padding: '4px 0',
   },
   flag: {
     display: 'block',
@@ -16,6 +15,10 @@ const useStyles = makeStyles({
     padding: 1,
     boxShadow:
       '0px 1px 1px -1px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 2px 0px rgba(0,0,0,0.12)',
+  },
+  header: {
+    padding: '2px 0',
+    alignItems: 'center',
   },
   popup: {
     padding: 0,
@@ -78,7 +81,7 @@ const PopUp = ({ country, radius }) => {
           <Typography style={{ color: 'orangered' }}>{cases}</Typography>
         </Grid>
 
-        <Grid item xs={12} style={{ padding: '5px 0' }}>
+        <Grid item xs={12} className={classes.divider}>
           <Divider />
         </Grid>
 
