@@ -1,29 +1,15 @@
 import React from 'react';
 import { Popup } from '@urbica/react-map-gl';
-import { Divider, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Card, Divider, Grid, Typography, makeStyles } from '@material-ui/core';
 import { orange, green, grey } from '@material-ui/core/colors';
-import './popup.css';
+import { Flag as FlagIcon } from '@material-ui/icons';
 
-const useStyles = makeStyles({
-  root: { width: '180px', maxWidth: 'auto', padding: 5 },
-  header: {
-    padding: '2px 0',
-    alignItems: 'center',
-  },
-  flag: {
-    display: 'block',
-    height: '1.2em',
-    padding: 1,
-    boxShadow:
-      '0px 1px 1px -1px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 2px 0px rgba(0,0,0,0.12)',
-  },
-  popup: {
-    padding: 0,
-  },
+const useStyles = makeStyles((theme) => ({
+  root: { width: '190px', maxWidth: '250px', padding: 5 },
   rightAlign: {
     textAlign: 'right',
   },
-});
+}));
 
 const circle = (color) => (
   <div
@@ -47,35 +33,32 @@ const PopUp = ({ country, radius }) => {
 
   return (
     <Popup
+      offset={radius / 2 + 2}
+      longitude={lng}
+      latitude={lat}
       closeButton={false}
       closeOnClick={false}
-      latitude={lat}
-      longitude={lng}
-      offset={radius / 2 + 2}
-      style={{ padding: 0 }}
     >
       <Grid
-        alignItems="center"
         container
         className={classes.root}
         direction="row"
+        alignItems="center"
       >
-        <Grid item xs={12}>
-          <Grid container className={classes.header}>
-            <Grid item xs={2}>
-              <img className={classes.flag} src={flag} variant="square" />
-            </Grid>
-            <Grid item xs={10} className={classes.rightAlign}>
-              <Typography>{country.country}</Typography>
-            </Grid>
-          </Grid>
+        <Grid item xs={6}>
+          <Typography>
+            <FlagIcon />
+          </Typography>
+        </Grid>
+        <Grid item xs={6} className={classes.rightAlign}>
+          <Typography component="p">Name</Typography>
         </Grid>
 
         <Grid item xs={6}>
           <Typography style={{ color: 'orangered' }}>Total cases</Typography>
         </Grid>
         <Grid item xs={6} className={classes.rightAlign}>
-          <Typography style={{ color: 'orangered' }}>{cases}</Typography>
+          <Typography style={{ color: 'orangered' }}>12345</Typography>
         </Grid>
 
         <Grid item xs={12} style={{ padding: '5px 0' }}>
@@ -89,7 +72,7 @@ const PopUp = ({ country, radius }) => {
           <Typography>Active</Typography>
         </Grid>
         <Grid item xs={5} className={classes.rightAlign}>
-          <Typography>{active}</Typography>
+          <Typography>0</Typography>
         </Grid>
 
         <Grid item xs={1}>
@@ -99,7 +82,7 @@ const PopUp = ({ country, radius }) => {
           <Typography>Recovered</Typography>
         </Grid>
         <Grid item xs={5} className={classes.rightAlign}>
-          <Typography>{recovered}</Typography>
+          <Typography>12345</Typography>
         </Grid>
 
         <Grid item xs={1}>
@@ -109,11 +92,38 @@ const PopUp = ({ country, radius }) => {
           <Typography>Fatal</Typography>
         </Grid>
         <Grid item xs={5} className={classes.rightAlign}>
-          <Typography>{deaths}</Typography>
+          <Typography>0</Typography>
         </Grid>
       </Grid>
     </Popup>
   );
+};
+
+const styles = {
+  container: {
+    padding: '5px 5px 0 5px ',
+    margin: 0,
+  },
+  header: {
+    paddingBottom: 5,
+  },
+  flag: {
+    height: '19px',
+  },
+  list: {
+    padding: 0,
+  },
+  listItem: {
+    fontWeight: 100,
+    textAlign: 'left',
+    paddingTop: '2px',
+  },
+  label: {
+    marginRight: '10px',
+  },
+  lightFont: {
+    fontWeight: 100,
+  },
 };
 
 export default PopUp;

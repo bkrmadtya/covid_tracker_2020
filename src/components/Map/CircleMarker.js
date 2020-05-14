@@ -42,19 +42,19 @@ const calculateRadius = (cases) => {
   let radius;
 
   if (cases <= 100) {
-    radius = 3;
-  } else if (cases > 100 && cases <= 1000) {
     radius = 5;
-  } else if (cases > 1000 && cases <= 5000) {
+  } else if (cases > 100 && cases <= 1000) {
     radius = 7;
+  } else if (cases > 1000 && cases <= 5000) {
+    radius = 9;
   } else if (cases > 5000 && cases <= 50000) {
-    radius = 12;
-  } else if (cases > 50000 && cases <= 100000) {
     radius = 15;
+  } else if (cases > 50000 && cases <= 100000) {
+    radius = 19;
   } else if (cases > 100000 && cases <= 250000) {
-    radius = 20;
+    radius = 24;
   } else {
-    radius = 32;
+    radius = 40;
   }
 
   return radius;

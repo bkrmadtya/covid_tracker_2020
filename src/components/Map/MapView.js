@@ -34,7 +34,7 @@ const viewPortSettings = {
 
 const MapView = ({ data, selectedCountry }) => {
   const classes = useStyles();
-  const [hoveredCountry, setHoveredCountry] = useState();
+  const [hoveredCountry, setHoveredCountry] = useState('Spain');
   const [viewPort, setViewPort] = useState(viewPortSettings);
 
   const _changeViewPort = (lat, lng, zoom) => {
