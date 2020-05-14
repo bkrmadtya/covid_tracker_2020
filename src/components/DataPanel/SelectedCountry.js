@@ -48,7 +48,6 @@ const SelectedCountry = React.memo(({ countries, getDataByCountry }) => {
   const { value, details } = countries.selected;
 
   return (
-    // <Card elevation={4} style={{ padding: 10 }}>
     <>
       <Select
         isSearchable={true}
@@ -90,7 +89,6 @@ const SelectedCountry = React.memo(({ countries, getDataByCountry }) => {
         </Grid>
       </Grid>
     </>
-    // </Card>
   );
 });
 

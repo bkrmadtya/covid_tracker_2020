@@ -5,5 +5,5 @@ export default {
   cases: orange[900],
   deaths: grey[500],
   recovered: green[500],
-  details: blue[500],
+  details: blue[800],
 };
