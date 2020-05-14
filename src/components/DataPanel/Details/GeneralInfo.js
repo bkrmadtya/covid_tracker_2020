@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+  Card,
+  Paper,
   Table,
   TableBody,
   TableCell,
@@ -20,7 +22,7 @@ const rows = {
   deathsPerOneMillion: 'Deaths per 1 million',
   tests: 'No. of tests',
   testsPerOneMillion: 'Tests per 1 million',
-  updated: 'Updated At',
+  updated: 'Last update',
 };
 
 const useStyles = makeStyles({
@@ -40,10 +42,10 @@ const DetailCards = ({ data }) => {
   if (!data) return null;
 
   return (
-    <TableContainer className={classes.root}>
+    <TableContainer component={Card} className={classes.root}>
       <Table size="small">
         <TableHead>
-          <TableRow style={{ width: '100%' }}>
+          <TableRow>
             <TableCell size="medium" colSpan={2} className={classes.title}>
               General Info
             </TableCell>
