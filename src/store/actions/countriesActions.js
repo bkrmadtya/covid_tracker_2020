@@ -1,7 +1,9 @@
-import { SELECT_COUNTRY } from './actionTypes';
+import { SELECT_COUNTRY, ERROR, INFO } from './actionTypes';
 
 import DataServices from 'services/DataServices';
 import LocalStorage from 'services/LocalStorageServices';
+
+import { setNotification } from 'store/actions/notificationActions';
 
 export const getDataByCountry = (selectedCountry) => async (dispatch) => {
   try {
@@ -35,8 +37,10 @@ export const getDataByCountry = (selectedCountry) => async (dispatch) => {
       payload: country,
     });
 
+    dispatch(setNotification('Data updated successfully', INFO));
+
     LocalStorage.storeDataLocally(SELECT_COUNTRY, country);
   } catch (e) {
-    console.log(e);
+    dispatch(setNotification(e.message, ERROR));
   }
 };

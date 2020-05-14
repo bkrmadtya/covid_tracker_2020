@@ -8,38 +8,21 @@ import axios from 'axios';
  * **/
 
 const getGlobalData = async () => {
-  try {
-    const response = await axios.get('https://corona.lmao.ninja/v2/countries');
-    return response.data;
-  } catch (e) {
-    console.log(`Failed to fetch countries: ${e.message}`, e);
-    return;
-  }
+  const response = await axios.get('https://corona.lmao.ninja/v2/countries');
+  return response.data;
 };
 
 const getDataByCountry = async (country) => {
   const path = country === 'Global' ? 'all' : `countries/${country}`;
-
-  try {
-    const response = await axios.get(`https://corona.lmao.ninja/v2/${path}`);
-    console.log(response.data);
-    return response.data;
-  } catch (e) {
-    console.log(`Failed to fetch data for ${country}: ${e.message}`, e);
-    return;
-  }
+  const response = await axios.get(`https://corona.lmao.ninja/v2/${path}`);
+  return response.data;
 };
 
 const getGlobalTrendData = async () => {
-  try {
-    const response = await axios.get(
-      'https://corona.lmao.ninja/v2/historical/all?lastdays=all'
-    );
-    return response.data;
-  } catch (e) {
-    console.log(`Failed to fetch weekly data: ${e.message}`, e);
-    return;
-  }
+  const response = await axios.get(
+    'https://corona.lmao.ninja/v2/historical/all?lastdays=all'
+  );
+  return response.data;
 };
 
 export default { getDataByCountry, getGlobalData, getGlobalTrendData };

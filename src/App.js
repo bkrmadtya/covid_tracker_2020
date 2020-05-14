@@ -17,6 +17,7 @@ import 'App.css';
 import Charts from 'components/Charts';
 import MapAndData from 'components/MapAndData';
 import NavBar from 'components/utils/NavBar';
+import NotificationBar from 'components/utils/NotificaitonBar';
 
 import { getInitialData } from 'store/actions/dataActions';
 import { getDataByCountry } from 'store/actions/countriesActions';
@@ -63,6 +64,7 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
       <CssBaseline />
       <Router>
         <NavBar />
+        <NotificationBar />
         <Toolbar variant="dense" />
         <Container maxWidth="xl">
           <Box my={2} className={classes.root}>

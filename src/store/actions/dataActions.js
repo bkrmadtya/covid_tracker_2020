@@ -2,10 +2,14 @@ import {
   INIT_GLOBAL_DATA,
   GET_GLOBAL_MONTHLY_DATA,
   INIT_COUNTRY_LIST,
+  ERROR,
+  INFO,
 } from './actionTypes';
 
 import DataServices from 'services/DataServices';
 import LocalStorage from 'services/LocalStorageServices';
+
+import { setNotification } from 'store/actions/notificationActions';
 
 export const getInitialData = () => async (dispatch) => {
   try {
@@ -13,6 +17,8 @@ export const getInitialData = () => async (dispatch) => {
 
     if (!data) {
       data = await DataServices.getGlobalData();
+
+      dispatch(setNotification('Data updated successfully', INFO));
     }
 
     dispatch({
@@ -37,7 +43,7 @@ export const getInitialData = () => async (dispatch) => {
 
     LocalStorage.storeDataLocally(INIT_GLOBAL_DATA, data);
   } catch (e) {
-    console.log(e);
+    dispatch(setNotification(e.message, ERROR));
   }
 };
 
