@@ -37,10 +37,10 @@ export const getDataByCountry = (selectedCountry) => async (dispatch) => {
       payload: country,
     });
 
-    dispatch(setNotification('Data updated successfully', INFO));
-
     LocalStorage.storeDataLocally(SELECT_COUNTRY, country);
   } catch (e) {
-    dispatch(setNotification(e.message, ERROR));
+    dispatch(
+      setNotification('There is some error. Please, try again later.', ERROR)
+    );
   }
 };

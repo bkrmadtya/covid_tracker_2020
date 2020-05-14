@@ -42,12 +42,14 @@ const THEME = createMuiTheme({
   },
 });
 
-const callEveryFiveMinutes = (func1, func2) => {
-  func1();
-  func2();
+const callEveryFiveMinutes = (getInitData, getDataByCountry) => {
+  getInitData();
+  getDataByCountry();
+
   setTimeout(() => {
     LocalStorage.clearLocalStorage();
-    callEveryFiveMinutes(func1, func2);
+    const updateInitData = () => getInitData(true); // true flag to denote it is called to update
+    callEveryFiveMinutes(updateInitData, getDataByCountry);
   }, 300000);
 };
 

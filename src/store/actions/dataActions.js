@@ -11,14 +11,17 @@ import LocalStorage from 'services/LocalStorageServices';
 
 import { setNotification } from 'store/actions/notificationActions';
 
-export const getInitialData = () => async (dispatch) => {
+export const getInitialData = (isUpdating) => async (dispatch) => {
   try {
     let data = LocalStorage.getLocalData(INIT_GLOBAL_DATA);
+
+    console.log(data, !data);
 
     if (!data) {
       data = await DataServices.getGlobalData();
 
-      dispatch(setNotification('Data updated successfully', INFO));
+      isUpdating &&
+        dispatch(setNotification('Data updated successfully', INFO));
     }
 
     dispatch({
@@ -43,15 +46,23 @@ export const getInitialData = () => async (dispatch) => {
 
     LocalStorage.storeDataLocally(INIT_GLOBAL_DATA, data);
   } catch (e) {
-    dispatch(setNotification(e.message, ERROR));
+    dispatch(
+      setNotification('There is some error. Please, try again later.', ERROR)
+    );
   }
 };
 
 export const getGlobalTrendData = () => async (dispatch) => {
-  const data = await DataServices.getGlobalTrendData();
+  try {
+    const data = await DataServices.getGlobalTrendData();
 
-  dispatch({
-    type: GET_GLOBAL_MONTHLY_DATA,
-    payload: data,
-  });
+    dispatch({
+      type: GET_GLOBAL_MONTHLY_DATA,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch(
+      setNotification('There is some error. Please, try again later.', ERROR)
+    );
+  }
 };

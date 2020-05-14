@@ -1,26 +1,38 @@
 import React from 'react';
-
-import { Snackbar, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { Snackbar, Typography, makeStyles } from '@material-ui/core';
+import { red, grey } from '@material-ui/core/colors';
 
 const vertical = 'bottom';
 const horizontal = 'center';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   content: {
-    backgroundColor: ({ type }) => (type === 'ERROR' ? 'red' : 'blue'),
+    backgroundColor: (props) => (props.type === 'INFO' ? grey[800] : red[500]),
     color: 'white',
-    padding: '5px 10px',
+    fontSize: '1.2em',
+    padding: '10px 40px',
+    borderRadius: 5,
   },
-});
+}));
 
-const NotificationBar = () => {
-  const classes = useStyles();
+const NotificationBar = ({ notification }) => {
+  const classes = useStyles({ type: notification?.type });
+
+  if (!notification) return null;
+
+  console.log(notification);
   return (
     <Snackbar anchorOrigin={{ vertical, horizontal }} open={true}>
-      <Typography>asdasdfasdf</Typography>
+      <Typography className={classes.content}>
+        {notification.message}
+      </Typography>
     </Snackbar>
   );
 };
 
-export default NotificationBar;
+const mapStateToProps = (state) => ({
+  notification: state.notification,
+});
+
+export default connect(mapStateToProps)(NotificationBar);
