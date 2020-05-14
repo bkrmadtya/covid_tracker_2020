@@ -5,6 +5,7 @@ import DetailCards from 'components/DataPanel/Details/DetailCards';
 import GeneralInfo from 'components/DataPanel/Details/GeneralInfo';
 
 import SelectedCountry from './SelectedCountry';
+import SourceAndInfo from './SourceAndInfo';
 
 const useStyles = makeStyles({
   root: {
@@ -30,6 +31,9 @@ const DataPanel = () => {
       </Grid>
       <Grid item>
         <GeneralInfo />
+      </Grid>
+      <Grid item>
+        <SourceAndInfo />
       </Grid>
     </Grid>
   );
