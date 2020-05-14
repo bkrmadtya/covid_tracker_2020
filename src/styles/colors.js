@@ -1,7 +1,9 @@
+import { blue, orange, green, grey, yellow } from '@material-ui/core/colors';
+
 export default {
-  active: '',
-  cases: 'rgb(222, 55, 0,0.5)',
-  deaths: 'grey',
-  recovered: '#21ba45',
-  details: "#3262a8"
+  active: yellow[800],
+  cases: orange[800],
+  deaths: grey[500],
+  recovered: green[500],
+  details: blue[500],
 };

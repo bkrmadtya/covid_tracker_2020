@@ -1,11 +1,15 @@
 import React from 'react';
 import { Popup } from '@urbica/react-map-gl';
 import { Divider, Grid, Typography, makeStyles } from '@material-ui/core';
-import { orange, green, grey } from '@material-ui/core/colors';
 import './popup.css';
+
+import Colors from 'styles/colors';
 
 const useStyles = makeStyles({
   root: { width: '180px', maxWidth: 'auto', padding: 5 },
+  cases: {
+    color: Colors.cases,
+  },
   divider: {
     padding: '4px 0',
   },
@@ -39,9 +43,9 @@ const circle = (color) => (
   />
 );
 
-const orangeCircle = circle(orange[500]);
-const greyCircle = circle(grey[500]);
-const greenCircle = circle(green[500]);
+const activeCircle = circle(Colors.active);
+const deathCircle = circle(Colors.deaths);
+const recoveredCircle = circle(Colors.recovered);
 
 const PopUp = ({ country, radius }) => {
   const classes = useStyles();
@@ -75,10 +79,10 @@ const PopUp = ({ country, radius }) => {
         </Grid>
 
         <Grid item xs={6}>
-          <Typography style={{ color: 'orangered' }}>Total cases</Typography>
+          <Typography className={classes.cases}>Total cases</Typography>
         </Grid>
         <Grid item xs={6} className={classes.rightAlign}>
-          <Typography style={{ color: 'orangered' }}>{cases}</Typography>
+          <Typography className={classes.cases}>{cases}</Typography>
         </Grid>
 
         <Grid item xs={12} className={classes.divider}>
@@ -86,7 +90,7 @@ const PopUp = ({ country, radius }) => {
         </Grid>
 
         <Grid item xs={1}>
-          {orangeCircle}
+          {activeCircle}
         </Grid>
         <Grid item xs={6}>
           <Typography>Active</Typography>
@@ -96,7 +100,7 @@ const PopUp = ({ country, radius }) => {
         </Grid>
 
         <Grid item xs={1}>
-          {greenCircle}
+          {recoveredCircle}
         </Grid>
         <Grid item xs={6}>
           <Typography>Recovered</Typography>
@@ -106,7 +110,7 @@ const PopUp = ({ country, radius }) => {
         </Grid>
 
         <Grid item xs={1}>
-          {greyCircle}
+          {deathCircle}
         </Grid>
         <Grid item xs={6}>
           <Typography>Fatal</Typography>

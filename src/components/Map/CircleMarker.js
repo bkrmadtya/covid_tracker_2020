@@ -1,15 +1,30 @@
 import React from 'react';
 import { Marker } from '@urbica/react-map-gl';
+import { makeStyles } from '@material-ui/core';
+
+import Colors from 'styles/colors';
 
 import PopUp from './PopUp';
+
+const useStyles = (radius) =>
+  makeStyles({
+    width: radius,
+    height: radius,
+    borderRadius: 50,
+    backgroundColor: '#de3700',
+    opacity: 0.5,
+    cursor: 'pointer',
+    '&: hover': {
+      boxShadow: '0px 0px 0px 3px #de0b00',
+    },
+  });
 
 const CircleMarker = ({ country, onHover, onLeave, hoveredCountry }) => {
   const { cases, country: name, countryInfo } = country;
   const { lat, long: lng } = countryInfo;
 
-  const isHovered = hoveredCountry === name;
-
   const radius = calculateRadius(cases);
+  const classes = useStyles(radius);
 
   const style = {
     width: radius,
