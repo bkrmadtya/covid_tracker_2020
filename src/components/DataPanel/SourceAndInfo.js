@@ -3,7 +3,7 @@ import { Card, CardContent } from '@material-ui/core';
 
 const SourceAndInfo = () => {
   return (
-    <Card>
+    <Card elevation={4}>
       <CardContent>
         <h4>Source: www.ninja.corona</h4>
         <h4>Source: www.ninja.corona</h4>

@@ -42,7 +42,7 @@ const DetailCards = ({ data }) => {
   if (!data) return null;
 
   return (
-    <TableContainer component={Card} className={classes.root}>
+    <TableContainer component={Card} className={classes.root} elevation={4}>
       <Table size="small">
         <TableHead>
           <TableRow>
