@@ -10,7 +10,7 @@ export const getDataByCountry = (selectedCountry) => async (dispatch) => {
     /**
      * Only fetch data if there is no locally saved data
      * Or, new country is not selected
-     * Selected country is "Global" by default when the application starts for the first time
+     * Selected country is "Global" by default when the application starts for the first time or refreshes
      */
 
     if (!data || (selectedCountry && data?.label !== selectedCountry)) {

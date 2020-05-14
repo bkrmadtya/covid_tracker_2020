@@ -2,7 +2,7 @@ import { INIT_COUNTRY_LIST, SELECT_COUNTRY } from 'store/actions/actionTypes';
 
 const initialState = {
   list: [],
-  selected: { value: 'Global', label: 'Global' },
+  selected: { value: 'Global', label: 'Global' }, // !important
 };
 
 const countriesReducer = (state = initialState, { type, payload }) => {

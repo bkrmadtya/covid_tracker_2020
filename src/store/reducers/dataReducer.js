@@ -11,7 +11,6 @@ const initialState = {
 const dataReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case INIT_GLOBAL_DATA:
-      // console.log('[INIT DATA] : ', payload);
       return { ...state, globalData: [...payload] };
     case GET_GLOBAL_MONTHLY_DATA:
       return { ...state, monthlyData: { ...payload } };

@@ -37,60 +37,51 @@ const computeMargin = (ifContinent) => {
   return margin;
 };
 
-const SelectedCountry = React.memo(({ countries, getDataByCountry }) => {
+const SelectedCountry = ({ countries, getDataByCountry }) => {
   const classes = useStyles();
   const handleChange = (data) => {
     getDataByCountry(data.value);
   };
 
-  if (!countries.list || !countries.selected) return null;
+  if (!countries.selected) return null;
 
   const { value, details } = countries.selected;
 
   return (
-    <>
-      <Select
-        isSearchable={true}
-        onChange={handleChange}
-        options={countries.list}
-        placeholder="Select a country"
-      />
-
-      <Grid
-        className={classes.grid}
-        container
-        direction="column"
-        alignContent="center"
-      >
-        <Grid item>
-          {details?.countryInfo?.flag && (
-            <img
-              className={classes.flag}
-              src={details?.countryInfo?.flag}
-              variant="square"
-            />
-          )}
-        </Grid>
-        <Grid item>
-          <Typography
-            className={classes.selectedCountry}
-            style={{ margin: computeMargin(details?.continent) }}
-            variant="h5"
-          >
-            {value}
-          </Typography>
-        </Grid>
-        <Grid item>
-          {details?.continent && (
-            <Typography className={classes.continent} variant="subtitle1">
-              {details.continent}
-            </Typography>
-          )}
-        </Grid>
+    <Grid
+      className={classes.grid}
+      container
+      direction="column"
+      alignContent="center"
+    >
+      <Grid item>
+        {details?.countryInfo?.flag && (
+          <img
+            className={classes.flag}
+            src={details?.countryInfo?.flag}
+            variant="square"
+          />
+        )}
       </Grid>
-    </>
+      <Grid item>
+        <Typography
+          className={classes.selectedCountry}
+          style={{ margin: computeMargin(details?.continent) }}
+          variant="h5"
+        >
+          {value}
+        </Typography>
+      </Grid>
+      <Grid item>
+        {details?.continent && (
+          <Typography className={classes.continent} variant="subtitle1">
+            {details.continent}
+          </Typography>
+        )}
+      </Grid>
+    </Grid>
   );
-});
+};
 
 const mapStateToProps = (state) => {
   return {

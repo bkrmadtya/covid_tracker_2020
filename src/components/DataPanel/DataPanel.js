@@ -4,6 +4,7 @@ import { Grid, makeStyles, useTheme, useMediaQuery } from '@material-ui/core';
 import DetailCards from 'components/DataPanel/Details/DetailCards';
 import GeneralInfo from 'components/DataPanel/Details/GeneralInfo';
 
+import CountrySelector from './CountrySelector';
 import SelectedCountry from './SelectedCountry';
 import SourceAndInfo from './SourceAndInfo';
 
@@ -27,6 +28,9 @@ const DataPanel = () => {
       alignContent="space-between"
       spacing={isNotMobile ? 0 : 2}
     >
+      <Grid item xs={12}>
+        <CountrySelector />
+      </Grid>
       <Grid item xs={12}>
         <SelectedCountry />
       </Grid>
