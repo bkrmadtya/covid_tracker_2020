@@ -6,9 +6,6 @@ import Select from 'react-select';
 import { getDataByCountry } from 'store/actions/countriesActions';
 
 const useStyles = makeStyles((theme) => ({
-  grid: {
-    marginTop: '10px',
-  },
   selectedCountry: {
     textAlign: 'center',
     fontWeight: 600,
@@ -48,12 +45,7 @@ const SelectedCountry = ({ countries, getDataByCountry }) => {
   const { value, details } = countries.selected;
 
   return (
-    <Grid
-      className={classes.grid}
-      container
-      direction="column"
-      alignContent="center"
-    >
+    <Grid container direction="column" alignContent="center">
       <Grid item>
         {details?.countryInfo?.flag && (
           <img

@@ -5,14 +5,21 @@ import {
   Paper,
   Table,
   TableBody,
-  TableCell,
+  TableCell as MuiTableCell,
   TableContainer,
   TableHead,
   TableRow,
   makeStyles,
+  withStyles,
 } from '@material-ui/core';
 
 import colors from 'styles/colors';
+
+const TableCell = withStyles({
+  root: {
+    padding: '10px 20px',
+  },
+})(MuiTableCell);
 
 const rows = {
   active: 'Active cases',
@@ -43,7 +50,7 @@ const DetailCards = ({ data }) => {
 
   return (
     <TableContainer component={Card} className={classes.root} elevation={4}>
-      <Table size="small">
+      <Table size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell size="medium" colSpan={2} className={classes.title}>
@@ -53,7 +60,7 @@ const DetailCards = ({ data }) => {
         </TableHead>
         <TableBody>
           {Object.keys(rows).map((key) => (
-            <TableRow key={key}>
+            <TableRow hover={true} key={key}>
               <TableCell component="th" scope="row" size="small" variant="head">
                 {rows[key]}
               </TableCell>

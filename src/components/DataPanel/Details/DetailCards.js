@@ -9,7 +9,6 @@ import colors from 'styles/colors';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
-    // marginBottom: '10px',
   },
 });
 

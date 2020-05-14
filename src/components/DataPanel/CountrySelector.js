@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 
@@ -8,7 +8,6 @@ const CountrySelector = ({ countries, getDataByCountry }) => {
   const handleChange = (data) => {
     getDataByCountry(data.value);
   };
-
   if (!countries.list) return null;
 
   return (
