@@ -7,7 +7,7 @@ import { getDataByCountry } from 'store/actions/countriesActions';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
-    margin: '15px 0',
+    marginTop: '10px',
   },
   selectedCountry: {
     textAlign: 'center',

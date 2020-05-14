@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, makeStyles } from '@material-ui/core';
+import { Grid, makeStyles, useTheme, useMediaQuery } from '@material-ui/core';
 
 import DetailCards from 'components/DataPanel/Details/DetailCards';
 import GeneralInfo from 'components/DataPanel/Details/GeneralInfo';
@@ -9,30 +9,34 @@ import SourceAndInfo from './SourceAndInfo';
 
 const useStyles = makeStyles({
   root: {
-    flex: 1,
+    flexGrow: 1,
     height: '100%',
   },
 });
 
 const DataPanel = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isNotMobile = useMediaQuery(theme.breakpoints.up('lg'));
+
   return (
     <Grid
       className={classes.root}
       container
-      direction="column"
-      // justify="space-between"
+      direction="row"
+      alignContent="space-between"
+      spacing={isNotMobile ? 0 : 2}
     >
-      <Grid item>
+      <Grid item xs={12}>
         <SelectedCountry />
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <DetailCards />
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <GeneralInfo />
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <SourceAndInfo />
       </Grid>
     </Grid>

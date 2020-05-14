@@ -5,10 +5,10 @@ const SourceAndInfo = () => {
   return (
     <Card>
       <CardContent>
-        <h1>Source: www.ninja.corona</h1>
-        <h1>Source: www.ninja.corona</h1>
-        <h1>Source: www.ninja.corona</h1>
-        <h1>Source: www.ninja.corona</h1>
+        <h4>Source: www.ninja.corona</h4>
+        <h4>Source: www.ninja.corona</h4>
+        <h4>Source: www.ninja.corona</h4>
+        <h4>Source: www.ninja.corona</h4>
       </CardContent>
     </Card>
   );

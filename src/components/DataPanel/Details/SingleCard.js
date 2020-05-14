@@ -12,6 +12,7 @@ const useStyles = makeStyles({
   root: {
     height: '100%',
     textAlign: 'center',
+    padding: 8,
   },
   cardContent: {
     '&:last-child': {
@@ -31,33 +32,27 @@ const SingleCard = ({ title, number, today, color }) => {
 
   return (
     <Card elevation={4} className={classes.root} style={style}>
-      <CardContent classes={{ root: classes.cardContent }}>
-        <Typography component="p" variant="subtitle1">
-          {title}
-        </Typography>
-        {number >= 0 ? (
-          <>
-            <Typography
-              className={classes.number}
-              component="p"
-              variant="h6"
-              style={{ color }}
-            >
-              {number}
-            </Typography>
+      <Typography component="p" variant="subtitle1">
+        {title}
+      </Typography>
+      {number >= 0 ? (
+        <>
+          <Typography
+            className={classes.number}
+            component="p"
+            variant="h6"
+            style={{ color }}
+          >
+            {number}
+          </Typography>
 
-            {today > 0 && (
-              <Chip
-                className={classes.chip}
-                label={`+ ${today}`}
-                size="small"
-              />
-            )}
-          </>
-        ) : (
-          <CircularProgress style={{ color }} />
-        )}
-      </CardContent>
+          {today > 0 && (
+            <Chip className={classes.chip} label={`+ ${today}`} size="small" />
+          )}
+        </>
+      ) : (
+        <CircularProgress style={{ color }} />
+      )}
     </Card>
   );
 };
