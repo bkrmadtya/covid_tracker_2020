@@ -6,40 +6,33 @@ import Colors from 'styles/colors';
 
 import PopUp from './PopUp';
 
-const useStyles = (radius) =>
-  makeStyles({
-    width: radius,
-    height: radius,
+const useStyles = makeStyles({
+  root: {
+    width: (props) => props.radius,
+    height: (props) => props.radius,
     borderRadius: 50,
-    backgroundColor: '#de3700',
+    backgroundColor: Colors.cases,
     opacity: 0.5,
     cursor: 'pointer',
-    '&: hover': {
+    '&:hover': {
       boxShadow: '0px 0px 0px 3px #de0b00',
     },
-  });
+  },
+});
 
 const CircleMarker = ({ country, onHover, onLeave, hoveredCountry }) => {
   const { cases, country: name, countryInfo } = country;
   const { lat, long: lng } = countryInfo;
 
   const radius = calculateRadius(cases);
-  const classes = useStyles(radius);
+  const classes = useStyles({ radius });
 
-  const style = {
-    width: radius,
-    height: radius,
-    borderRadius: 50,
-    backgroundColor: '#de3700',
-    opacity: 0.5,
-    cursor: 'pointer',
-    boxShadow: isHovered && '0px 0px 0px 3px #de0b00',
-  };
+  const isHovered = hoveredCountry === name;
 
   return (
     <Marker key={country.country} longitude={lng} latitude={lat}>
       <div
-        style={style}
+        className={classes.root}
         onMouseOver={() => onHover(country)}
         onMouseLeave={() => onLeave()}
       >
