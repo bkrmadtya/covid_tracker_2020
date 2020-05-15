@@ -13,18 +13,17 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import Colors from 'styles/colors';
+import colors from 'styles/colors';
 
 const TableCell = withStyles({
   root: {
-    padding: '10px 20px',
-    fontSize: 13,
+    padding: '10px 15px',
   },
 })(MuiTableCell);
 
 const useStyles = makeStyles({
   title: {
-    backgroundColor: Colors.infoGreen,
+    backgroundColor: colors.infoGreen,
     color: 'white',
     textAlign: 'center',
     fontSize: 14,

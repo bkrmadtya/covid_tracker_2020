@@ -17,7 +17,7 @@ import colors from 'styles/colors';
 
 const TableCell = withStyles({
   root: {
-    padding: '10px 20px',
+    padding: '10px 15px',
   },
 })(MuiTableCell);
 
@@ -33,11 +33,9 @@ const rows = {
 };
 
 const useStyles = makeStyles({
-  root: {
-    borderTop: `5px solid ${colors.details}`,
-    borderRadius: 5,
-  },
   title: {
+    backgroundColor: colors.details,
+    color: 'white',
     textAlign: 'center',
     fontSize: 14,
   },
@@ -49,7 +47,7 @@ const DetailCards = ({ data }) => {
   if (!data) return null;
 
   return (
-    <TableContainer component={Card} className={classes.root} elevation={4}>
+    <TableContainer component={Card} elevation={4}>
       <Table size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
