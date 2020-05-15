@@ -4,7 +4,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Card } from '@material-ui/core';
 
-import colors from 'styles/colors';
+import Colors from 'styles/colors';
 
 const chartOptions = {
   chart: {
@@ -84,7 +84,7 @@ const _convertToChartOptions = (title, data) => {
 
   const newOptions = { ...chartOptions };
 
-  newOptions.colors = Object.keys(keys).map((i) => colors[i]);
+  newOptions.colors = Object.keys(keys).map((i) => Colors[i]);
   newOptions.plotOptions.series = {
     pointStart: Date.UTC(year, month, day),
     pointInterval: 24 * 3600 * 1000,

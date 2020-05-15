@@ -18,7 +18,9 @@ const pieOptions = {
     text: 'Global case distribution by country',
   },
   tooltip: {
-    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
+    headerFormat: '',
+    pointFormat:
+      '<span style="color:{point.color}">●</span> {point.name}: <b>{point.percentage:.1f}%</b><br/>',
   },
   accessibility: {
     point: {
