@@ -11,6 +11,9 @@ const chartOptions = {
     type: 'spline',
   },
 
+  credits: {
+    enabled: false,
+  },
   title: {
     text: '',
   },

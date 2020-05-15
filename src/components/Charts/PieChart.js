@@ -11,6 +11,9 @@ const pieOptions = {
     plotShadow: false,
     type: 'pie',
   },
+  credits: {
+    enabled: false,
+  },
   title: {
     text: 'Global case distribution by country',
   },

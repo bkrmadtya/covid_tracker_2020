@@ -13,6 +13,9 @@ const options = {
     text: 'Cases distribution across world per million population',
   },
   colorAxis: {},
+  credits: {
+    enabled: false,
+  },
   legend: {
     title: {
       text: 'Number of cases per million',
