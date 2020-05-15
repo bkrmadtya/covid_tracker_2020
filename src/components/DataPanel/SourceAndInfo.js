@@ -21,11 +21,8 @@ const TableCell = withStyles({
 })(MuiTableCell);
 
 const useStyles = makeStyles({
-  root: {
-    borderTop: '5px solid red',
-  },
   title: {
-    backgroundColor: 'red',
+    backgroundColor: '#66bb6a',
     color: 'white',
     textAlign: 'center',
     fontSize: 14,
@@ -39,7 +36,7 @@ const SourceAndInfo = () => {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Card} className={classes.root} elevation={4}>
+    <TableContainer component={Card} elevation={4}>
       <Table size="small" aria-label="a dense table">
         <TableHead className={classes.header}>
           <TableRow>
