@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 
-import DataPanel from 'components/DataPanel/DataPanel';
+import DataPanel from 'components/DataPanel';
 import MapView from 'components/Map/MapView';
 
 const useStyles = makeStyles((theme) => ({

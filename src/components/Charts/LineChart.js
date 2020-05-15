@@ -8,6 +8,12 @@ import Colors from 'styles/colors';
 
 require('highcharts/modules/exporting')(Highcharts);
 
+Highcharts.setOptions({
+  lang: {
+    thousandsSep: ',',
+  },
+});
+
 const chartOptions = {
   chart: {
     type: 'spline',

@@ -6,6 +6,12 @@ import { Card } from '@material-ui/core';
 
 require('highcharts/modules/exporting')(Highcharts);
 
+Highcharts.setOptions({
+  lang: {
+    thousandsSep: ',',
+  },
+});
+
 const pieOptions = {
   chart: {
     type: 'pie',
@@ -28,7 +34,7 @@ const pieOptions = {
   tooltip: {
     headerFormat: '',
     pointFormat:
-      '<span style="color:{point.color}">●</span> {point.name}: <b>{point.percentage:.1f}%</b><br/>',
+      '<span style="color:{point.color}">●</span> {point.name}: <b>{point.percentage:.1f}%  ({point.y:,.0f} cases)</b><br/>',
   },
   plotOptions: {
     pie: {
@@ -36,7 +42,8 @@ const pieOptions = {
       cursor: 'pointer',
       dataLabels: {
         enabled: true,
-        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+        format:
+          '<b>{point.name}</b>: {point.percentage:.1f} % ({point.y:,.0f} cases)',
       },
     },
   },
@@ -46,12 +53,15 @@ const pieOptions = {
 const _convertDataToPieOptions = (data) => {
   console.log(data[11]);
   const newOptions = { ...pieOptions };
-  const parsedData = data.map((i) => {
-    return {
-      name: i.country,
-      y: i.cases,
-    };
-  });
+  const parsedData = data
+    .map((i) => {
+      return {
+        name: i.country,
+        y: i.cases,
+      };
+    })
+    .sort((a, b) => b.y - a.y);
+
   newOptions.series = [
     {
       data: [...parsedData],
