@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {
@@ -14,8 +14,6 @@ import { blueGrey } from '@material-ui/core/colors';
 
 import 'App.css';
 
-import Charts from 'components/Charts';
-import MapAndData from 'components/MapAndData';
 import NavBar from 'components/utils/NavBar';
 import NotificationBar from 'components/utils/NotificaitonBar';
 
@@ -23,6 +21,9 @@ import { getInitialData } from 'store/actions/dataActions';
 import { getDataByCountry } from 'store/actions/countriesActions';
 
 import LocalStorage from 'services/LocalStorageServices';
+
+const MapAndData = React.lazy(() => import('components/MapAndData'));
+const Charts = React.lazy(() => import('components/Charts'));
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,17 +65,19 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
   return (
     <MuiThemeProvider theme={THEME}>
       <CssBaseline />
-      <Router>
-        <NavBar />
-        <NotificationBar />
-        <Toolbar variant="dense" />
-        <Container maxWidth="xl">
-          <Box my={2} className={classes.root}>
-            <Route exact component={Charts} path="/charts" />
-            <Route exact component={MapAndData} path="/" />
-          </Box>
-        </Container>
-      </Router>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Router>
+          <NavBar />
+          <NotificationBar />
+          <Toolbar variant="dense" />
+          <Container maxWidth="xl">
+            <Box my={2} className={classes.root}>
+              <Route exact component={Charts} path="/charts" />
+              <Route exact component={MapAndData} path="/" />
+            </Box>
+          </Container>
+        </Router>
+      </Suspense>
     </MuiThemeProvider>
   );
 });
