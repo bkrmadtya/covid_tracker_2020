@@ -14,6 +14,7 @@ import { blueGrey } from '@material-ui/core/colors';
 
 import 'App.css';
 
+import LoadingScreen from 'components/utils/LoadingScreen';
 import NavBar from 'components/utils/NavBar';
 import NotificationBar from 'components/utils/NotificaitonBar';
 
@@ -65,19 +66,19 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
   return (
     <MuiThemeProvider theme={THEME}>
       <CssBaseline />
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Router>
-          <NavBar />
-          <NotificationBar />
-          <Toolbar variant="dense" />
-          <Container maxWidth="xl">
-            <Box my={2} className={classes.root}>
+      <Router>
+        <NavBar />
+        <NotificationBar />
+        <Toolbar variant="dense" />
+        <Container maxWidth="xl">
+          <Box my={2} className={classes.root}>
+            <Suspense fallback={<LoadingScreen />}>
               <Route exact component={Charts} path="/charts" />
               <Route exact component={MapAndData} path="/" />
-            </Box>
-          </Container>
-        </Router>
-      </Suspense>
+            </Suspense>
+          </Box>
+        </Container>
+      </Router>
     </MuiThemeProvider>
   );
 });

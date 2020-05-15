@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Grid, makeStyles, Typography } from '@material-ui/core';
 
@@ -32,10 +32,10 @@ const Charts = ({ getGlobalTrendData }) => {
         <Typography variant="body1">Covid 19 case analysis</Typography>
       </Grid>
       <Grid item>
-        <PieChart />
+        <MapChart />
       </Grid>
       <Grid item>
-        <MapChart />
+        <PieChart />
       </Grid>
       <Grid item>
         <LineChart />
