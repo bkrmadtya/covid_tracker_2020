@@ -17,6 +17,7 @@ export const getDataByCountry = (selectedCountry) => async (dispatch) => {
 
     if (!data || (selectedCountry && data?.label !== selectedCountry)) {
       data = await DataServices.getDataByCountry(selectedCountry || 'Global');
+      LocalStorage.storeDataLocally(SELECT_COUNTRY, country);
     }
 
     /**
@@ -36,8 +37,6 @@ export const getDataByCountry = (selectedCountry) => async (dispatch) => {
       type: SELECT_COUNTRY,
       payload: country,
     });
-
-    LocalStorage.storeDataLocally(SELECT_COUNTRY, country);
   } catch (e) {
     dispatch(setNotification(e.message, ERROR));
   }

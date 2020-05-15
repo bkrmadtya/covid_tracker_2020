@@ -17,6 +17,7 @@ export const getInitialData = (isUpdating) => async (dispatch) => {
 
     if (!data) {
       data = await DataServices.getGlobalData();
+      LocalStorage.storeDataLocally(INIT_GLOBAL_DATA, data);
 
       isUpdating &&
         dispatch(setNotification('Data updated successfully', INFO));
@@ -41,8 +42,6 @@ export const getInitialData = (isUpdating) => async (dispatch) => {
       type: INIT_COUNTRY_LIST,
       payload: countryList,
     });
-
-    LocalStorage.storeDataLocally(INIT_GLOBAL_DATA, data);
   } catch (e) {
     dispatch(setNotification(e.message, ERROR));
   }
@@ -50,7 +49,12 @@ export const getInitialData = (isUpdating) => async (dispatch) => {
 
 export const getGlobalTrendData = () => async (dispatch) => {
   try {
-    const data = await DataServices.getGlobalTrendData();
+    let data = LocalStorage.getLocalData(GET_GLOBAL_MONTHLY_DATA);
+
+    if (!data) {
+      data = await DataServices.getGlobalTrendData();
+      LocalStorage.storeDataLocally(GET_GLOBAL_MONTHLY_DATA, data);
+    }
 
     dispatch({
       type: GET_GLOBAL_MONTHLY_DATA,
