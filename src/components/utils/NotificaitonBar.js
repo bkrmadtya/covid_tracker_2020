@@ -21,7 +21,6 @@ const NotificationBar = ({ notification }) => {
 
   if (!notification) return null;
 
-  console.log(notification);
   return (
     <Snackbar anchorOrigin={{ vertical, horizontal }} open={true}>
       <Typography className={classes.content}>

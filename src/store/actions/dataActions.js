@@ -15,8 +15,6 @@ export const getInitialData = (isUpdating) => async (dispatch) => {
   try {
     let data = LocalStorage.getLocalData(INIT_GLOBAL_DATA);
 
-    console.log(data, !data);
-
     if (!data) {
       data = await DataServices.getGlobalData();
 

@@ -1,12 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {
-  Box,
-  Container,
-  Grid,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { Grid, makeStyles, Typography } from '@material-ui/core';
 
 import LineChart from 'components/Charts/LineChart';
 import MapChart from 'components/Charts/MapChart';
@@ -26,28 +20,27 @@ const useStyles = makeStyles({
 
 const Charts = ({ getGlobalTrendData }) => {
   const classes = useStyles();
+
   useEffect(() => {
     getGlobalTrendData();
   }, [getGlobalTrendData]);
 
   return (
-    <Container className={classes.root} maxWidth="md">
-      <Grid container direction="column" spacing={3}>
-        <Grid item>
-          <Typography variant="h2">Charts and Graphs</Typography>
-          <Typography variant="body1">Covid 19 case analysis</Typography>
-        </Grid>
-        <Grid item>
-          <PieChart />
-        </Grid>
-        <Grid item>
-          <MapChart />
-        </Grid>
-        <Grid item>
-          <LineChart />
-        </Grid>
+    <Grid container direction="column" spacing={3}>
+      <Grid item>
+        <Typography variant="h2">Charts and Graphs</Typography>
+        <Typography variant="body1">Covid 19 case analysis</Typography>
       </Grid>
-    </Container>
+      <Grid item>
+        <PieChart />
+      </Grid>
+      <Grid item>
+        <MapChart />
+      </Grid>
+      <Grid item>
+        <LineChart />
+      </Grid>
+    </Grid>
   );
 };
 

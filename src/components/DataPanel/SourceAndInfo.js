@@ -1,14 +1,12 @@
 import React from 'react';
 import {
   Card,
-  CardContent,
   Table,
   TableBody,
   TableCell as MuiTableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
   makeStyles,
   withStyles,
 } from '@material-ui/core';
@@ -41,12 +39,7 @@ const SourceAndInfo = () => {
       <Table size="small" aria-label="a dense table">
         <TableHead className={classes.header}>
           <TableRow>
-            <TableCell
-              size="medium"
-              colSpan={2}
-              className={classes.title}
-              textAlign="center"
-            >
+            <TableCell size="medium" colSpan={2} className={classes.title}>
               Source and Advice
             </TableCell>
           </TableRow>
@@ -77,7 +70,7 @@ const SourceAndInfo = () => {
                 href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
                 target="_"
               >
-                World Health Organization From WHO
+                World Health Organization
               </a>
             </TableCell>
           </TableRow>

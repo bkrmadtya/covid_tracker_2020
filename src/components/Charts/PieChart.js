@@ -51,7 +51,6 @@ const pieOptions = {
 };
 
 const _convertDataToPieOptions = (data) => {
-  console.log(data[11]);
   const newOptions = { ...pieOptions };
   const parsedData = data
     .map((i) => {
