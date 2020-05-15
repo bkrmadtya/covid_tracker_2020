@@ -6,6 +6,8 @@ import { Card } from '@material-ui/core';
 
 import Colors from 'styles/colors';
 
+require('highcharts/modules/exporting')(Highcharts);
+
 const chartOptions = {
   chart: {
     type: 'spline',

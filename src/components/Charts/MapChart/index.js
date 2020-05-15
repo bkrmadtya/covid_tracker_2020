@@ -7,6 +7,7 @@ import { Card } from '@material-ui/core';
 import mapDataWorld from 'components/Charts/MapChart/mapDataWorld';
 
 require('highcharts/modules/map')(Highcharts);
+require('highcharts/modules/exporting')(Highcharts);
 
 const options = {
   title: {
