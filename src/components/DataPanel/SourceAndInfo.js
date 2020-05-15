@@ -1,69 +1,106 @@
 import React from 'react';
 import {
-  Button,
   Card,
   CardContent,
-  CardActions,
+  Table,
+  TableBody,
+  TableCell as MuiTableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   Typography,
   makeStyles,
+  withStyles,
 } from '@material-ui/core';
+
+const TableCell = withStyles({
+  root: {
+    padding: '10px 20px',
+    fontSize: 13,
+  },
+})(MuiTableCell);
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    borderTop: '5px solid red',
   },
   title: {
+    backgroundColor: 'red',
+    color: 'white',
+    textAlign: 'center',
     fontSize: 14,
   },
-  pos: {
-    marginBottom: 12,
+  link: {
+    color: 'green',
   },
 });
 
 const SourceAndInfo = () => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.root} elevation={4}>
-      <CardContent>
-        <Typography className={classes.title} gutterBottom>
-          Data Source:
-        </Typography>
-        <Typography variant="subtitle1" component="h2" className={classes.pos}>
-          <a href="https://corona.lmao.ninja" target="_">
-            https://corona.lmao.ninja
-          </a>
-        </Typography>
-        <Typography className={classes.title} gutterBottom>
-          Latest news on Covid 19:
-        </Typography>
-        <Typography variant="subtitle1" component="h2">
-          <a
-            href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
-            target="_"
-          >
-            https://www.who.int/emergencies/diseases/novel-coronavirus-2019
-          </a>
-        </Typography>
-        <Typography className={classes.title} gutterBottom>
-          Public advice from WHO:
-        </Typography>
-        <Typography variant="subtitle1" component="h2">
-          <a
-            href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
-            target="_"
-          >
-            https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public
-          </a>
-        </Typography>
-      </CardContent>
-    </Card>
+    <TableContainer component={Card} className={classes.root} elevation={4}>
+      <Table size="small" aria-label="a dense table">
+        <TableHead className={classes.header}>
+          <TableRow>
+            <TableCell
+              size="medium"
+              colSpan={2}
+              className={classes.title}
+              textAlign="center"
+            >
+              Source and Advice
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow hover={true}>
+            <TableCell component="th" scope="row" size="small" variant="head">
+              Data source
+            </TableCell>
+            <TableCell>
+              <a
+                className={classes.link}
+                href="https://corona.lmao.ninja"
+                target="_"
+              >
+                Novel COVID API
+              </a>
+            </TableCell>
+          </TableRow>
+
+          <TableRow hover={true}>
+            <TableCell component="th" scope="row" size="small" variant="head">
+              Latest news on Covid 19
+            </TableCell>
+            <TableCell>
+              <a
+                className={classes.link}
+                href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019"
+                target="_"
+              >
+                World Health Organization From WHO
+              </a>
+            </TableCell>
+          </TableRow>
+
+          <TableRow hover={true}>
+            <TableCell component="th" scope="row" size="small" variant="head">
+              General public advice
+            </TableCell>
+            <TableCell>
+              <a
+                className={classes.link}
+                href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
+                target="_"
+              >
+                World Health Organization
+              </a>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
