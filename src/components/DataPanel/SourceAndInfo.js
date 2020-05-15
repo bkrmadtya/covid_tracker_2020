@@ -13,6 +13,8 @@ import {
   withStyles,
 } from '@material-ui/core';
 
+import Colors from 'styles/colors';
+
 const TableCell = withStyles({
   root: {
     padding: '10px 20px',
@@ -22,7 +24,7 @@ const TableCell = withStyles({
 
 const useStyles = makeStyles({
   title: {
-    backgroundColor: '#66bb6a',
+    backgroundColor: Colors.infoGreen,
     color: 'white',
     textAlign: 'center',
     fontSize: 14,
