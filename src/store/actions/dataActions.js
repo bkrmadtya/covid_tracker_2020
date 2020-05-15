@@ -46,9 +46,7 @@ export const getInitialData = (isUpdating) => async (dispatch) => {
 
     LocalStorage.storeDataLocally(INIT_GLOBAL_DATA, data);
   } catch (e) {
-    dispatch(
-      setNotification('There is some error. Please, try again later.', ERROR)
-    );
+    dispatch(setNotification(e.message, ERROR));
   }
 };
 
@@ -61,8 +59,6 @@ export const getGlobalTrendData = () => async (dispatch) => {
       payload: data,
     });
   } catch (e) {
-    dispatch(
-      setNotification('There is some error. Please, try again later.', ERROR)
-    );
+    dispatch(setNotification(e.message, ERROR));
   }
 };
