@@ -1,8 +1,8 @@
-import React from './node_modules/components/Map/node_modules/react';
-import { Marker } from './node_modules/components/Map/node_modules/@urbica/react-map-gl';
-import { makeStyles } from './node_modules/components/Map/node_modules/@material-ui/core';
+import React from 'react';
+import { Marker } from '@urbica/react-map-gl';
+import { makeStyles } from '@material-ui/core';
 
-import Colors from './node_modules/components/Map/node_modules/styles/colors';
+import Colors from 'styles/colors';
 
 import PopUp from './PopUp';
 

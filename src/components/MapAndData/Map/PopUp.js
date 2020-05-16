@@ -1,14 +1,9 @@
-import React from './node_modules/components/Map/node_modules/react';
-import { Popup } from './node_modules/components/Map/node_modules/@urbica/react-map-gl';
-import {
-  Divider,
-  Grid,
-  Typography,
-  makeStyles,
-} from './node_modules/components/Map/node_modules/@material-ui/core';
+import React from 'react';
+import { Popup } from '@urbica/react-map-gl';
+import { Divider, Grid, Typography, makeStyles } from '@material-ui/core';
 import './popup.css';
 
-import Colors from './node_modules/components/Map/node_modules/styles/colors';
+import Colors from 'styles/colors';
 
 const useStyles = makeStyles({
   root: { width: '180px', maxWidth: 'auto', padding: 5 },

@@ -2,8 +2,6 @@ import React, { useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {
-  Box,
-  Container,
   CssBaseline,
   Toolbar,
   MuiThemeProvider,
@@ -70,14 +68,10 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
         <NavBar />
         <NotificationBar />
         <Toolbar variant="dense" />
-        <Container maxWidth="xl">
-          <Box my={2} className={classes.root}>
-            <Suspense fallback={<LoadingScreen />}>
-              <Route exact component={Charts} path="/charts" />
-              <Route exact component={MapAndData} path="/" />
-            </Suspense>
-          </Box>
-        </Container>
+        <Suspense fallback={<LoadingScreen />}>
+          <Route exact component={Charts} path="/charts" />
+          <Route exact component={MapAndData} path="/" />
+        </Suspense>
       </Router>
     </MuiThemeProvider>
   );

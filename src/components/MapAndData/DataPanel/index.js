@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, makeStyles, useTheme, useMediaQuery } from '@material-ui/core';
 
-import DetailCards from 'components/DataPanel/Details/DetailCards';
-import GeneralInfo from 'components/DataPanel/Details/GeneralInfo';
+import DetailCards from 'components/MapAndData/DataPanel/Details/DetailCards';
+import GeneralInfo from 'components/MapAndData/DataPanel/Details/GeneralInfo';
 
 import CountrySelector from './CountrySelector';
 import SelectedCountry from './SelectedCountry';

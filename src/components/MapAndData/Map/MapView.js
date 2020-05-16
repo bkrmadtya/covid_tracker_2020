@@ -1,16 +1,8 @@
-import React, {
-  useEffect,
-  useState,
-} from './node_modules/components/Map/node_modules/react';
-import { connect } from './node_modules/components/Map/node_modules/react-redux';
-import MapGL, {
-  NavigationControl,
-} from './node_modules/components/Map/node_modules/@urbica/react-map-gl';
-import {
-  Card,
-  makeStyles,
-} from './node_modules/components/Map/node_modules/@material-ui/core';
-import './node_modules/components/Map/node_modules/mapbox-gl/dist/mapbox-gl.css';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import MapGL, { NavigationControl } from '@urbica/react-map-gl';
+import { Card, makeStyles } from '@material-ui/core';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import CircleMarker from './CircleMarker';
 
