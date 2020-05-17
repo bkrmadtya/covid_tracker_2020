@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(15),
     height: theme.spacing(15),
-    margin: '0 auto',
-    border: '8px solid white',
+    margin: '10px auto',
+    border: '1px solid white',
   },
   chip: {
-    margin: 10,
+    margin: '5px 10px',
     boxShadow:
       '0px 3px 5px -1px rgba(0,0,0,0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0,0.12)',
     backgroundColor: 'white',
@@ -29,13 +29,17 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   greetings: {
-    margin: '20px 0 10px 0',
+    margin: '20px 0 2px 0',
   },
   header: {
-    marginBottom: 10,
+    marginBottom: 20,
   },
   name: {
-    margin: '10px 0 -5px 0',
+    margin: '15px 0 -5px 0',
+  },
+  projectLink: {
+    display: 'block',
+    marginTop: 30,
   },
   root: {
     padding: 40,
@@ -63,7 +67,7 @@ const AboutMe = () => {
         justify="center"
       >
         <Grid item>
-          <Typography className={classes.header} variant="h5" gutterBottom>
+          <Typography className={classes.header} variant="h4" gutterBottom>
             About me
           </Typography>
 
@@ -77,20 +81,30 @@ const AboutMe = () => {
             variant="round"
           />
 
-          <Typography className={classes.name} variant="h5" component="div">
+          <Typography className={classes.name} variant="h4" component="div">
             Bikram Karki
           </Typography>
-          <Typography variant="subtitle2" color="textSecondary" gutterBottom>
+          <Typography variant="subtitle1" color="textSecondary" gutterBottom>
             Software Developer
           </Typography>
 
-          <Typography className={classes.greetings} variant="body2">
-            Say hi and connect with me
+          <Typography className={classes.greetings} variant="body1">
+            Say hi and connect with me.
           </Typography>
 
           <ChipLink name="Email" className={classes.chip} />
           <ChipLink name="Linkedin" className={classes.chip} />
           <ChipLink name="Github" className={classes.chip} />
+
+          <Typography
+            className={classes.projectLink}
+            component="a"
+            href="https://github.com/bkrmadtya/covid_tracker_2020"
+            target="_"
+            color="textSecondary"
+          >
+            Link to this project
+          </Typography>
         </Grid>
         <Grid item className={classes.signature}>
           <Typography color="textSecondary" variant="subtitle2">
