@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// TODO:: REMOVE TRY CATCH AND HANDLE ERROR SEPARATELY IN REDUX ACTIONS
-
 /**
  * @api {getGlobalData} ==> get limited data for all countries, used in MAP
  * @api {getDataByCountry} ==> get more specific data for selected country *
