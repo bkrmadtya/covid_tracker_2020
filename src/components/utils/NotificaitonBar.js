@@ -7,6 +7,9 @@ const vertical = 'bottom';
 const horizontal = 'center';
 
 const useStyles = makeStyles((theme) => ({
+  snackbar: {
+    opacity: 0.7,
+  },
   content: {
     backgroundColor: (props) => (props.type === 'INFO' ? grey[800] : red[500]),
     color: 'white',
@@ -22,7 +25,11 @@ const NotificationBar = ({ notification }) => {
   if (!notification) return null;
 
   return (
-    <Snackbar anchorOrigin={{ vertical, horizontal }} open={true}>
+    <Snackbar
+      anchorOrigin={{ vertical, horizontal }}
+      className={classes.snackbar}
+      open={true}
+    >
       <Typography className={classes.content}>
         {notification.message}
       </Typography>
