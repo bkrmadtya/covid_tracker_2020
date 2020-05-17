@@ -6,8 +6,10 @@ import {
   Toolbar,
   Typography,
   Button,
+  IconButton,
 } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
+import MoreIcon from '@material-ui/icons/MoreVert';
 
 import logo from 'styles/icons/logo.png';
 
@@ -16,7 +18,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: grey[900],
   },
   button: {
-    margin: 'auto 5',
+    marginRight: theme.spacing(0),
+  },
+  ellipsis: {
+    color: 'white',
+    transform: 'rotate(90deg);',
+    filter: 'invert(1)',
   },
   logo: {
     height: theme.spacing(3),
@@ -35,7 +42,7 @@ const NavBar = () => {
     history.push(path);
   };
 
-  const isHomeRoute = !location.pathname.includes('/charts');
+  const isActive = !location.pathname.includes('/charts');
 
   return (
     <AppBar className={classes.appBar}>
@@ -48,7 +55,6 @@ const NavBar = () => {
           className={classes.button}
           color="inherit"
           onClick={() => _navigateTo('/')}
-          style={{ backgroundColor: isHomeRoute && 'grey' }}
         >
           Map
         </Button>
@@ -56,10 +62,17 @@ const NavBar = () => {
           className={classes.button}
           color="inherit"
           onClick={() => _navigateTo('/charts')}
-          style={{ backgroundColor: !isHomeRoute && 'grey' }}
         >
           Charts
         </Button>
+        <IconButton
+          aria-label="display more actions"
+          edge="end"
+          color="inherit"
+          onClick={() => _navigateTo('/about')}
+        >
+          <MoreIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
