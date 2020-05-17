@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     flexGrow: 1,
-    height: '850px',
+    height: '890px',
   },
   items: {
     flexGrow: 1,
