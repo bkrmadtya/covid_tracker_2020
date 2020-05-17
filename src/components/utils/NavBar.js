@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
   AppBar,
   makeStyles,
@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: grey[900],
   },
+  button: {
+    margin: 'auto 5',
+  },
   logo: {
     height: theme.spacing(3),
     verticalAlign: 'middle',
@@ -26,10 +29,14 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
   const classes = useStyles();
   const history = useHistory();
+  const location = useLocation();
 
   const _navigateTo = (path) => {
     history.push(path);
   };
+
+  const isHomeRoute = !location.pathname.includes('/charts');
+
   return (
     <AppBar className={classes.appBar}>
       <Toolbar variant="dense">
@@ -37,10 +44,20 @@ const NavBar = () => {
           <img className={classes.logo} src={logo} />
           Covid 19 Tracker
         </Typography>
-        <Button color="inherit" onClick={() => _navigateTo('/')}>
+        <Button
+          className={classes.button}
+          color="inherit"
+          onClick={() => _navigateTo('/')}
+          style={{ backgroundColor: isHomeRoute && 'grey' }}
+        >
           Map
         </Button>
-        <Button color="inherit" onClick={() => _navigateTo('/charts')}>
+        <Button
+          className={classes.button}
+          color="inherit"
+          onClick={() => _navigateTo('/charts')}
+          style={{ backgroundColor: !isHomeRoute && 'grey' }}
+        >
           Charts
         </Button>
       </Toolbar>

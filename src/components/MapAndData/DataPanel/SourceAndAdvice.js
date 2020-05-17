@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SourceAndInfo = () => {
+const SourceAndAdvice = () => {
   const classes = useStyles();
 
   return (
@@ -99,4 +99,4 @@ const SourceAndInfo = () => {
   );
 };
 
-export default SourceAndInfo;
+export default SourceAndAdvice;

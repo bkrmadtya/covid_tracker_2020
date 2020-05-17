@@ -1,10 +1,15 @@
 import React from 'react';
-import { Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
+import {
+  Backdrop,
+  CircularProgress,
+  LinearProgress,
+  makeStyles,
+} from '@material-ui/core';
 
 const useStyles = makeStyles({
   backdrop: {
     backgroundColor: 'transparent',
-    color: 'grey',
+    color: 'blue',
   },
 });
 
@@ -12,7 +17,7 @@ const LoadingScreen = () => {
   const classes = useStyles();
   return (
     <Backdrop className={classes.backdrop} open={true}>
-      <CircularProgress color="inherit" />
+      <CircularProgress />
     </Backdrop>
   );
 };

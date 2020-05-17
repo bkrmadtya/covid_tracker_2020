@@ -6,7 +6,7 @@ import GeneralInfo from 'components/MapAndData/DataPanel/Details/GeneralInfo';
 
 import CountrySelector from './CountrySelector';
 import SelectedCountry from './SelectedCountry';
-import SourceAndInfo from './SourceAndInfo';
+import SourceAndInfo from './SourceAndAdvice';
 
 const useStyles = makeStyles({
   root: {
