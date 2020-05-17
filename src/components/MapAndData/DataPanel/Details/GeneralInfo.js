@@ -23,7 +23,7 @@ const TableCell = withStyles({
 
 const rows = {
   active: 'Active cases',
-  // affectedCountries: 'No. of affected countries',
+  affectedCountries: 'No. of affected countries',
   critical: 'Critical',
   casesPerOneMillion: 'Cases per million',
   deathsPerOneMillion: 'Deaths per million',
@@ -42,6 +42,24 @@ const useStyles = makeStyles({
   },
 });
 
+const _generateTableRow = (data) => {
+  if (!data.affectedCountries) {
+    delete rows.affectedCountries;
+  }
+  return Object.keys(rows).map((key) => (
+    <TableRow hover={true} key={key}>
+      <TableCell component="th" scope="row" size="small" variant="head">
+        {rows[key]}
+      </TableCell>
+      <TableCell style={{ width: 160 }} align="right">
+        {key === 'updated'
+          ? new Date(data[key]).toLocaleTimeString()
+          : data[key]}
+      </TableCell>
+    </TableRow>
+  ));
+};
+
 const DetailCards = ({ data }) => {
   const classes = useStyles();
 
@@ -59,20 +77,7 @@ const DetailCards = ({ data }) => {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {Object.keys(rows).map((key) => (
-            <TableRow hover={true} key={key}>
-              <TableCell component="th" scope="row" size="small" variant="head">
-                {rows[key]}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {key === 'updated'
-                  ? new Date(data[key]).toLocaleTimeString()
-                  : data[key]}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        <TableBody>{_generateTableRow(data)}</TableBody>
       </Table>
     </TableContainer>
   );
