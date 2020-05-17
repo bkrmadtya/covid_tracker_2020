@@ -25,10 +25,11 @@ const rows = {
   active: 'Active cases',
   // affectedCountries: 'No. of affected countries',
   critical: 'Critical',
-  casesPerOneMillion: 'Cases per 1 million',
-  deathsPerOneMillion: 'Deaths per 1 million',
+  casesPerOneMillion: 'Cases per million',
+  deathsPerOneMillion: 'Deaths per million',
+  population: 'Population',
   tests: 'No. of tests',
-  testsPerOneMillion: 'Tests per 1 million',
+  testsPerOneMillion: 'Tests per million',
   updated: 'Last update',
 };
 
@@ -45,6 +46,8 @@ const DetailCards = ({ data }) => {
   const classes = useStyles();
 
   if (!data) return null;
+
+  console.log(data);
 
   return (
     <TableContainer component={Card} elevation={4}>

@@ -8,13 +8,13 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import LineChart from 'components/Charts/LineChart';
-import MapChart from 'components/Charts/MapChart';
-import PieChart from 'components/Charts/PieChart';
+import LineChart from 'components/Graphs/LineChart';
+import MapChart from 'components/Graphs/MapChart';
+import PieChart from 'components/Graphs/PieChart';
 
 import { getGlobalTrendData } from 'store/actions/dataActions';
 
-const Charts = ({ getGlobalTrendData }) => {
+const Graphs = ({ getGlobalTrendData }) => {
   useEffect(() => {
     getGlobalTrendData();
   }, [getGlobalTrendData]);
@@ -24,7 +24,7 @@ const Charts = ({ getGlobalTrendData }) => {
       <Box my={2}>
         <Grid container direction="column" spacing={3}>
           <Grid item>
-            <Typography variant="h4">Charts and Graphs</Typography>
+            <Typography variant="h4">Graphs and charts</Typography>
             <Typography variant="body1">Covid 19 case analysis</Typography>
           </Grid>
           <Grid item>
@@ -42,4 +42,4 @@ const Charts = ({ getGlobalTrendData }) => {
   );
 };
 
-export default connect(null, { getGlobalTrendData })(Charts);
+export default connect(null, { getGlobalTrendData })(Graphs);

@@ -4,7 +4,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { Card } from '@material-ui/core';
 
-import mapDataWorld from 'components/Charts/MapChart/mapDataWorld';
+import mapDataWorld from 'components/Graphs/MapChart/mapDataWorld';
 
 require('highcharts/modules/map')(Highcharts);
 require('highcharts/modules/exporting')(Highcharts);

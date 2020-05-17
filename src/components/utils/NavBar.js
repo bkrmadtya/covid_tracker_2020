@@ -61,9 +61,9 @@ const NavBar = () => {
         <Button
           className={classes.button}
           color="inherit"
-          onClick={() => _navigateTo('/charts')}
+          onClick={() => _navigateTo('/graphs')}
         >
-          Charts
+          graphs
         </Button>
         <IconButton
           aria-label="display more actions"
