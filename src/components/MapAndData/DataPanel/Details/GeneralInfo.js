@@ -44,6 +44,7 @@ const useStyles = makeStyles({
 
 const _generateTableRow = (data) => {
   if (!data.affectedCountries) {
+    console.log(data.affectedCountries);
     delete rows.affectedCountries;
   }
   return Object.keys(rows).map((key) => (
@@ -64,8 +65,6 @@ const DetailCards = ({ data }) => {
   const classes = useStyles();
 
   if (!data) return null;
-
-  console.log(data);
 
   return (
     <TableContainer component={Card} elevation={4}>
