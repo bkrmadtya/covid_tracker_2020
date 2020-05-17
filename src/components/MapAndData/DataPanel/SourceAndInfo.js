@@ -37,6 +37,10 @@ const SourceAndInfo = () => {
   return (
     <TableContainer component={Card} elevation={4}>
       <Table size="small" aria-label="a dense table">
+        <caption>
+          All these numbers are people just like us.{' '}
+          <b>Stay Safe and Keep Other Safe!</b>
+        </caption>
         <TableHead className={classes.header}>
           <TableRow>
             <TableCell size="medium" colSpan={2} className={classes.title}>
