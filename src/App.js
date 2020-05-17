@@ -21,8 +21,9 @@ import { getDataByCountry } from 'store/actions/countriesActions';
 
 import LocalStorage from 'services/LocalStorageServices';
 
-const MapAndData = React.lazy(() => import('components/MapAndData'));
+const AboutMe = React.lazy(() => import('components/AboutMe'));
 const Charts = React.lazy(() => import('components/Charts'));
+const MapAndData = React.lazy(() => import('components/MapAndData'));
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,6 +71,7 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
         <Toolbar variant="dense" />
         <Suspense fallback={<LoadingScreen />}>
           <Route exact component={Charts} path="/charts" />
+          <Route exact component={AboutMe} path="/about" />
           <Route exact component={MapAndData} path="/" />
         </Suspense>
       </Router>
