@@ -19,8 +19,7 @@ export const getInitialData = (isUpdating) => async (dispatch) => {
       data = await DataServices.getGlobalData();
       LocalStorage.storeDataLocally(INIT_GLOBAL_DATA, data);
 
-      isUpdating &&
-        dispatch(setNotification('Data updated successfully', INFO));
+      isUpdating && dispatch(setNotification('New data updated', INFO));
     }
 
     dispatch({
