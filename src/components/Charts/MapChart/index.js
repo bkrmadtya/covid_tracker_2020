@@ -11,7 +11,10 @@ require('highcharts/modules/exporting')(Highcharts);
 
 const options = {
   title: {
-    text: 'Cases distribution across world per million population',
+    text: 'Covid 19 infection per million population',
+  },
+  subtitle: {
+    text: 'Distribution across the world',
   },
   colorAxis: {},
   credits: {
@@ -19,10 +22,7 @@ const options = {
   },
   legend: {
     title: {
-      text: 'Number of cases per million',
-      style: {
-        'text-align': 'center',
-      },
+      text: 'No of cases per million',
     },
   },
   mapNavigation: {

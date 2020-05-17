@@ -29,7 +29,10 @@ const pieOptions = {
     showTable: true,
   },
   title: {
-    text: 'Global case distribution by country',
+    text: 'Covid 19 infection rate',
+  },
+  subtitle: {
+    text: 'Case distribution among countries',
   },
   tooltip: {
     headerFormat: '',

@@ -23,10 +23,10 @@ const chartOptions = {
     enabled: false,
   },
   title: {
-    text: '',
+    text: 'Global Covid 19 cases trend',
   },
   subtitle: {
-    text: '',
+    text: 'Linear scale',
   },
 
   legend: {
@@ -73,7 +73,7 @@ const chartOptions = {
   yAxis: {},
 };
 
-const _convertToChartOptions = (title, data) => {
+const _convertToChartOptions = (data) => {
   const keys = {
     cases: 'Cases',
     deaths: 'Deaths',
@@ -98,8 +98,6 @@ const _convertToChartOptions = (title, data) => {
     pointInterval: 24 * 3600 * 1000,
   };
   newOptions.series = [...series];
-  newOptions.subtitle.text = 'Source: www.corona.lmao.ninja';
-  newOptions.title.text = title;
 
   newOptions.xAxis = {
     type: 'datetime',
@@ -119,7 +117,7 @@ const _convertToChartOptions = (title, data) => {
 const WeeklyChart = ({ data }) => {
   if (!data) return null;
 
-  const options = _convertToChartOptions('Global Covid Cases trends', data);
+  const options = _convertToChartOptions(data);
 
   return (
     <Card elevation={4}>
