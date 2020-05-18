@@ -25,8 +25,9 @@ Dashboard applicaiton to track and visualize the Covid 19 case data
 - Selectable and searchable list of countries
 - Ellaborated details on selected country
 - Graphs
-- Auto updates every 5 minutes to fetch new data
+- Auto updates with notification every 5 minutes to fetch new data
 - Caching of data retrived in localstorage to reduce number of api calls
+- Responsive UI for mobile screens
 
 #### Result
 
@@ -42,8 +43,9 @@ Dashboard applicaiton to track and visualize the Covid 19 case data
 <p align="center">
 <b>Mobile Screens</b><br><br>
 
-<img width="205" height="365" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/responsiveMap.png?raw=true" />
-<img width="205" height="365" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/responsiveGraphs.png?raw=true" />
+<img width="205" height="365"  alt="Responsive UI" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/responsiveMap.png?raw=true" />
+<img width="205" height="365" alt="Responsive UI" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/responsiveGraphs.png?raw=true" />
+<img width="205" height="365" alt="Responsive UI" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/notification.png?raw=true" />
 
 </p>
 
