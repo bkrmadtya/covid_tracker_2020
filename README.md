@@ -43,7 +43,7 @@ Dashboard applicaiton to track and visualize the Covid 19 case data
 <p align="center">
 <b>Mobile Screens</b><br><br>
 
-<img width="205" height="365"  alt="Responsive UI" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/responsiveMap.png?raw=true" />
+<img width="205" height="365"  alt="Responsive UI" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/responsiveMaps.png?raw=true" />
 <img width="205" height="365" alt="Responsive UI" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/responsiveGraphs.png?raw=true" />
 <img width="205" height="365" alt="Responsive UI" src="https://github.com/bkrmadtya/covid_tracker_2020/blob/master/screenshots/notification.png?raw=true" />
 
