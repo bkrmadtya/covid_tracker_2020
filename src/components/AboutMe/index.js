@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
   },
   container: {
-    height: '94vh',
+    height: '80vh',
     textAlign: 'center',
   },
   greetings: {
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   signature: {
     position: 'absolute',
-    bottom: 5,
+    bottom: '5px',
     right: 0,
     left: 0,
   },
