@@ -47,7 +47,11 @@ const NavBar = () => {
   return (
     <AppBar className={classes.appBar}>
       <Toolbar variant="dense">
-        <Typography className={classes.title} variant="h6">
+        <Typography
+          className={classes.title}
+          variant="h6"
+          onClick={() => _navigateTo('/')}
+        >
           <img className={classes.logo} src={logo} />
           Covid 19 Tracker
         </Typography>
