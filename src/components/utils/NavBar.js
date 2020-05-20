@@ -30,26 +30,23 @@ const useStyles = makeStyles((theme) => ({
     verticalAlign: 'middle',
     margin: '-2px 7px 0 0',
   },
-  title: { flexGrow: 1, fontSize: '1em' },
+  title: { flexGrow: 1, fontSize: '1em', cursor: 'pointer' },
 }));
 
 const NavBar = () => {
   const classes = useStyles();
   const history = useHistory();
-  const location = useLocation();
 
   const _navigateTo = (path) => {
     history.push(path);
   };
-
-  const isActive = !location.pathname.includes('/charts');
 
   return (
     <AppBar className={classes.appBar}>
       <Toolbar variant="dense">
         <Typography
           className={classes.title}
-          variant="h6"
+          component="h6"
           onClick={() => _navigateTo('/')}
         >
           <img className={classes.logo} src={logo} />
