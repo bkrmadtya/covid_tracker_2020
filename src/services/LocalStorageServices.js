@@ -1,12 +1,21 @@
 const storeDataLocally = (key, data) => {
-  localStorage.setItem(key, JSON.stringify(data));
+  try {
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch (e) {
+    return null;
+  }
 };
 
 const getLocalData = (key) => {
-  return JSON.parse(localStorage.getItem(key));
+  try {
+    const data = JSON.parse(localStorage.getItem(key));
+    return data;
+  } catch (e) {
+    return null;
+  }
 };
 
-const clearLocalStorage = () => localStorage.clear();
+const clearLocalStorage = () => localStorage && localStorage.clear();
 
 export default {
   clearLocalStorage,
