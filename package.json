@@ -26,7 +26,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "rm -rf build && npm run build && netlify deploy -d build",
+    "deploy:draft": "rm -rf build && npm run build && netlify deploy -d build",
+    "deploy:prod": "netlify deploy -d build --prod",
     "test": "react-scripts test",
     "eject": "NODE_PATH=src/ react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'"
