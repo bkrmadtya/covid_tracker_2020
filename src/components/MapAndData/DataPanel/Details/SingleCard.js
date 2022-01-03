@@ -47,7 +47,7 @@ const SingleCard = ({ title, number, today, color }) => {
           </Typography>
 
           {today > 0 && (
-            <Chip className={classes.chip} label={`+ ${today}`} size="small" />
+            <Chip className={classes.chip} label={`+ ${today.toLocaleString()}`} size="small" />
           )}
         </>
       ) : (
