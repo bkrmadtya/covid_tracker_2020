@@ -47,4 +47,4 @@ const DataPanel = () => {
   );
 };
 
-export default DataPanel;
+export default React.memo(DataPanel);

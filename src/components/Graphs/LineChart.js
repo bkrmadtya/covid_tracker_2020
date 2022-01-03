@@ -132,4 +132,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(WeeklyChart);
+export default connect(mapStateToProps)(React.memo(WeeklyChart));

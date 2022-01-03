@@ -91,4 +91,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(PieChart);
+export default connect(mapStateToProps)(React.memo(PieChart));

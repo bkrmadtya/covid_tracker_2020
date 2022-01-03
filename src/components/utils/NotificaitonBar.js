@@ -41,4 +41,4 @@ const mapStateToProps = (state) => ({
   notification: state.notification,
 });
 
-export default connect(mapStateToProps)(NotificationBar);
+export default connect(mapStateToProps)(React.memo(NotificationBar));

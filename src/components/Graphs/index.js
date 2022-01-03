@@ -42,4 +42,4 @@ const Graphs = ({ getGlobalTrendData }) => {
   );
 };
 
-export default connect(null, { getGlobalTrendData })(Graphs);
+export default connect(null, { getGlobalTrendData })(React.memo(Graphs));

@@ -86,4 +86,4 @@ const mapStateToProps = (state) => ({
   data: state.countries.selected.details,
 });
 
-export default connect(mapStateToProps)(DetailCards);
+export default connect(mapStateToProps)(React.memo(DetailCards));

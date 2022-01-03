@@ -81,4 +81,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getDataByCountry })(SelectedCountry);
+export default connect(mapStateToProps, { getDataByCountry })(React.memo(SelectedCountry));

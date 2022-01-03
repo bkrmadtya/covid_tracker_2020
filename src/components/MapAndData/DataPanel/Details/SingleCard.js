@@ -57,4 +57,4 @@ const SingleCard = ({ title, number, today, color }) => {
   );
 };
 
-export default SingleCard;
+export default React.memo(SingleCard);

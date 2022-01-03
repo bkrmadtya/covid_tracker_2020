@@ -123,4 +123,4 @@ const PopUp = ({ country, radius }) => {
   );
 };
 
-export default PopUp;
+export default React.memo(PopUp);

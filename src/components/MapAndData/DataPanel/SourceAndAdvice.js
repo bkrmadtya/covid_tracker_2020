@@ -99,4 +99,4 @@ const SourceAndAdvice = () => {
   );
 };
 
-export default SourceAndAdvice;
+export default React.memo(SourceAndAdvice);

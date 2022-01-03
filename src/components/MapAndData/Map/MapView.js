@@ -79,7 +79,7 @@ const MapView = ({ data, selectedCountry }) => {
         accessToken={MAPBOX_TOKEN}
         className={classes.map}
         mapStyle={mapStyle}
-        onViewportChange={(viewport) => {}}
+        onViewportChange={(viewport) => { }}
         {...viewPort}
       >
         {data.map((country) => (
@@ -105,4 +105,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(MapView);
+export default connect(mapStateToProps)(React.memo(MapView));
