@@ -55,25 +55,16 @@ const NavBar = () => {
         <Button
           className={classes.button}
           color="inherit"
-          onClick={() => _navigateTo('/')}
-        >
-          Map
-        </Button>
-        <Button
-          className={classes.button}
-          color="inherit"
           onClick={() => _navigateTo('/graphs')}
         >
-          graphs
+          Graphs
         </Button>
-        <IconButton
-          aria-label="display more actions"
-          edge="end"
+        <Button
           color="inherit"
           onClick={() => _navigateTo('/about')}
         >
-          <MoreIcon />
-        </IconButton>
+          About
+        </Button>
       </Toolbar>
     </AppBar>
   );
