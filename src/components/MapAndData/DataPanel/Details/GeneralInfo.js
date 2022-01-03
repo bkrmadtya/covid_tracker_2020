@@ -54,8 +54,8 @@ const _generateTableRow = (data) => {
       </TableCell>
       <TableCell style={{ width: 160 }} align="right">
         {key === 'updated'
-          ? new Date(data[key]).toLocaleTimeString()
-          : data[key]}
+          ? new Date(data[key]).toLocaleString()
+          : data[key].toLocaleString()}
       </TableCell>
     </TableRow>
   ));
