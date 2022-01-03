@@ -1,15 +1,13 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   AppBar,
   makeStyles,
   Toolbar,
   Typography,
   Button,
-  IconButton,
 } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
-import MoreIcon from '@material-ui/icons/MoreVert';
 
 import logo from 'styles/icons/logo.png';
 
