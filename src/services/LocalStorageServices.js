@@ -1,6 +1,9 @@
+const LAST_UPDATE_TIME = 'LAST_UPDATE_TIME';
+
 const storeDataLocally = (key, data) => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
+    localStorage.setItem(LAST_UPDATE_TIME, JSON.stringify(Date.now()));
   } catch (e) {
     return null;
   }
@@ -15,10 +18,15 @@ const getLocalData = (key) => {
   }
 };
 
+const getLastUpdateTime = () => {
+  return getLocalData(LAST_UPDATE_TIME);
+}
+
 const clearLocalStorage = () => localStorage && localStorage.clear();
 
 export default {
   clearLocalStorage,
   getLocalData,
   storeDataLocally,
+  getLastUpdateTime,
 };
