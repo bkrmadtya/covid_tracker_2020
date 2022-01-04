@@ -1,14 +1,7 @@
 import React, { useEffect, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {
-  CssBaseline,
-  Toolbar,
-  MuiThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from '@material-ui/core';
-import { blueGrey } from '@material-ui/core/colors';
+import { Toolbar } from '@material-ui/core';
 
 import 'App.css';
 
@@ -24,24 +17,6 @@ import LocalStorage from 'services/LocalStorageServices';
 const AboutMe = React.lazy(() => import('components/AboutMe'));
 const Graphs = React.lazy(() => import('components/Graphs'));
 const MapAndData = React.lazy(() => import('components/MapAndData'));
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-}));
-
-const THEME = createMuiTheme({
-  palette: {
-    background: {
-      default: blueGrey[50],
-    },
-  },
-  typography: {
-    fontFamily: ['Roboto', '"Helvetica Neue"', 'Arial'].join(','),
-    fontSize: 12,
-  },
-});
 
 const callEveryFiveMinutes = (getInitData, getDataByCountry) => {
   getInitData();
@@ -61,21 +36,17 @@ const App = React.memo(({ getInitialData, getDataByCountry }) => {
     return callEveryFiveMinutes;
   }, [callEveryFiveMinutes]);
 
-  const classes = useStyles();
   return (
-    <MuiThemeProvider theme={THEME}>
-      <CssBaseline />
-      <Router>
-        <NavBar />
-        <NotificationBar />
-        <Toolbar variant="dense" />
-        <Suspense fallback={<LoadingScreen />}>
-          <Route exact component={Graphs} path="/graphs" />
-          <Route exact component={AboutMe} path="/about" />
-          <Route exact component={MapAndData} path="/" />
-        </Suspense>
-      </Router>
-    </MuiThemeProvider>
+    <Router>
+      <NavBar />
+      <NotificationBar />
+      <Toolbar variant="dense" />
+      <Suspense fallback={<LoadingScreen />}>
+        <Route exact component={Graphs} path="/graphs" />
+        <Route exact component={AboutMe} path="/about" />
+        <Route exact component={MapAndData} path="/" />
+      </Suspense>
+    </Router>
   );
 });
 
