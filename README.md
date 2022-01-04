@@ -53,7 +53,7 @@ Dashboard applicaiton to track and visualize the Covid 19 case data
 
 #### Credit
 
-**Data Source:** [Novel Covid API](https://corona.lmao.ninja/) <br>
+**Data Source:** [disease.sh API](https://disease.sh/) <br>
 **Icon Source:** [icons8](https://icons8.com/) <br>
 **Inspired by:** www.bing.com/covid <br>
 

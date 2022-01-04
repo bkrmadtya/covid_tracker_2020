@@ -56,10 +56,10 @@ const SourceAndAdvice = () => {
             <TableCell>
               <a
                 className={classes.link}
-                href="https://corona.lmao.ninja"
+                href="https://disease.sh/"
                 target="_"
               >
-                Novel COVID API
+                disease.sh API
               </a>
             </TableCell>
           </TableRow>
