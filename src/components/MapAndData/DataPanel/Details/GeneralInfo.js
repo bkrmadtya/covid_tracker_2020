@@ -44,7 +44,6 @@ const useStyles = makeStyles({
 
 const _generateTableRow = (data) => {
   if (!data.affectedCountries) {
-    console.log(data.affectedCountries);
     delete rows.affectedCountries;
   }
   return Object.keys(rows).map((key) => (
