@@ -43,7 +43,7 @@ const SingleCard = ({ title, number, today, color }) => {
             variant="h6"
             style={{ color }}
           >
-            {number}
+            {number.toLocaleString()}
           </Typography>
 
           {today > 0 && (
