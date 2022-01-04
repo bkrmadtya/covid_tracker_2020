@@ -1,15 +1,13 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   AppBar,
   makeStyles,
   Toolbar,
   Typography,
   Button,
-  IconButton,
 } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
-import MoreIcon from '@material-ui/icons/MoreVert';
 
 import logo from 'styles/icons/logo.png';
 
@@ -55,28 +53,19 @@ const NavBar = () => {
         <Button
           className={classes.button}
           color="inherit"
-          onClick={() => _navigateTo('/')}
-        >
-          Map
-        </Button>
-        <Button
-          className={classes.button}
-          color="inherit"
           onClick={() => _navigateTo('/graphs')}
         >
-          graphs
+          Graphs
         </Button>
-        <IconButton
-          aria-label="display more actions"
-          edge="end"
+        <Button
           color="inherit"
           onClick={() => _navigateTo('/about')}
         >
-          <MoreIcon />
-        </IconButton>
+          About
+        </Button>
       </Toolbar>
     </AppBar>
   );
 };
 
-export default NavBar;
+export default React.memo(NavBar);

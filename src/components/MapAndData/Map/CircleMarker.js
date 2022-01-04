@@ -68,4 +68,4 @@ const calculateRadius = (cases) => {
   return radius;
 };
 
-export default CircleMarker;
+export default React.memo(CircleMarker);

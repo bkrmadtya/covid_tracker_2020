@@ -5,20 +5,22 @@ import axios from 'axios';
  * @api {getDataByCountry} ==> get more specific data for selected country *
  * **/
 
+const baseURL = 'https://disease.sh/v3/covid-19';
+
 const getGlobalData = async () => {
-  const response = await axios.get('https://corona.lmao.ninja/v2/countries');
+  const response = await axios.get(`${baseURL}/countries`);
   return response.data;
 };
 
 const getDataByCountry = async (country) => {
   const path = country === 'Global' ? 'all' : `countries/${country}`;
-  const response = await axios.get(`https://corona.lmao.ninja/v2/${path}`);
+  const response = await axios.get(`${baseURL}/${path}`);
   return response.data;
 };
 
 const getGlobalTrendData = async () => {
   const response = await axios.get(
-    'https://corona.lmao.ninja/v2/historical/all?lastdays=all'
+    `${baseURL}/historical/all?lastdays=all`
   );
   return response.data;
 };

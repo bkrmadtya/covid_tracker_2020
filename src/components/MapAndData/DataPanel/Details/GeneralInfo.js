@@ -44,7 +44,6 @@ const useStyles = makeStyles({
 
 const _generateTableRow = (data) => {
   if (!data.affectedCountries) {
-    console.log(data.affectedCountries);
     delete rows.affectedCountries;
   }
   return Object.keys(rows).map((key) => (
@@ -54,8 +53,8 @@ const _generateTableRow = (data) => {
       </TableCell>
       <TableCell style={{ width: 160 }} align="right">
         {key === 'updated'
-          ? new Date(data[key]).toLocaleTimeString()
-          : data[key]}
+          ? new Date(data[key]).toLocaleString()
+          : data[key].toLocaleString()}
       </TableCell>
     </TableRow>
   ));
@@ -86,4 +85,4 @@ const mapStateToProps = (state) => ({
   data: state.countries.selected.details,
 });
 
-export default connect(mapStateToProps)(DetailCards);
+export default connect(mapStateToProps)(React.memo(DetailCards));

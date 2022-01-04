@@ -11,11 +11,19 @@ import LocalStorage from 'services/LocalStorageServices';
 
 import { setNotification } from 'store/actions/notificationActions';
 
+const FIVE_MINUTES = 1000 * 60 * 5;
+
 export const getInitialData = (isUpdating) => async (dispatch) => {
   try {
+    const lastUpdatedTime = LocalStorage.getLastUpdateTime();
+    const shouldUpdate = Date.now() - lastUpdatedTime >= FIVE_MINUTES;
+    if (shouldUpdate) {
+      LocalStorage.clearLocalStorage();
+    }
+
     let data = LocalStorage.getLocalData(INIT_GLOBAL_DATA);
 
-    if (!data) {
+    if (!data || shouldUpdate) {
       data = await DataServices.getGlobalData();
       LocalStorage.storeDataLocally(INIT_GLOBAL_DATA, data);
 

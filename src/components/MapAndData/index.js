@@ -35,4 +35,4 @@ const MapAndData = () => {
   );
 };
 
-export default MapAndData;
+export default React.memo(MapAndData);

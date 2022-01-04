@@ -43,11 +43,11 @@ const SingleCard = ({ title, number, today, color }) => {
             variant="h6"
             style={{ color }}
           >
-            {number}
+            {number.toLocaleString()}
           </Typography>
 
           {today > 0 && (
-            <Chip className={classes.chip} label={`+ ${today}`} size="small" />
+            <Chip className={classes.chip} label={`+ ${today.toLocaleString()}`} size="small" />
           )}
         </>
       ) : (
@@ -57,4 +57,4 @@ const SingleCard = ({ title, number, today, color }) => {
   );
 };
 
-export default SingleCard;
+export default React.memo(SingleCard);

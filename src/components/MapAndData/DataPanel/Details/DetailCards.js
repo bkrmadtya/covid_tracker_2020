@@ -16,7 +16,7 @@ const DetailCards = ({ details }) => {
   const classes = useStyles();
   if (!details) return null;
 
-  const { cases, todayCases, deaths, todayDeaths, recovered } = details;
+  const { cases, todayCases, deaths, todayDeaths, recovered, todayRecovered } = details;
 
   return (
     <Grid className={classes.root} container spacing={2}>
@@ -32,6 +32,7 @@ const DetailCards = ({ details }) => {
         <SingleCard
           title="Recovered"
           number={recovered}
+          today={todayRecovered}
           color={colors.recovered}
         />
       </Grid>
@@ -51,4 +52,4 @@ const mapStateToProps = (state) => ({
   details: state.countries.selected.details,
 });
 
-export default connect(mapStateToProps)(DetailCards);
+export default connect(mapStateToProps)(React.memo(DetailCards));

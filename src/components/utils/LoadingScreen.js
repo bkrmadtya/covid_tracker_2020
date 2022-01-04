@@ -22,4 +22,4 @@ const LoadingScreen = () => {
   );
 };
 
-export default LoadingScreen;
+export default React.memo(LoadingScreen);
