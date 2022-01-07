@@ -24,8 +24,8 @@ const Graphs = ({ getGlobalTrendData }) => {
       <Box my={2}>
         <Grid container direction="column" spacing={3}>
           <Grid item>
-            <Typography variant="h4">Graphs and charts</Typography>
-            <Typography variant="body1">Covid 19 case analysis</Typography>
+            <Typography align="center" variant="h4">Graphs and charts</Typography>
+            <Typography align="center" variant="body1">Covid 19 case analysis</Typography>
           </Grid>
           <Grid item>
             <MapChart />
