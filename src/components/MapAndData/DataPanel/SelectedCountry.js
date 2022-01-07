@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card, Grid, makeStyles, Typography } from '@material-ui/core';
-import Select from 'react-select';
+import { Grid, makeStyles, Typography } from '@material-ui/core';
 
 import { getDataByCountry } from 'store/actions/countriesActions';
 

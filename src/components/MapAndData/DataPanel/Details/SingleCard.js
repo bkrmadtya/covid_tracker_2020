@@ -21,8 +21,8 @@ const useStyles = makeStyles({
   },
   number: { margin: '-5px 0' },
   chip: {
-    marginTop: '0.5em',
-    width: 70,
+    marginTop: 3,
+    padding: 10,
   },
 });
 
