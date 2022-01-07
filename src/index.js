@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import {
   CssBaseline,
   MuiThemeProvider,
-  createMuiTheme,
+  createTheme,
 } from '@material-ui/core';
 import { blueGrey } from '@material-ui/core/colors';
 
@@ -13,7 +13,7 @@ import App from './App';
 
 import store from 'store';
 
-const THEME = createMuiTheme({
+const THEME = createTheme({
   palette: {
     background: {
       default: blueGrey[50],
