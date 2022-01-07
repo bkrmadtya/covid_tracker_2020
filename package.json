@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "@urbica/react-map-gl": "^1.14.4",
     "axios": "^0.21.4",
-    "highcharts": "^8.2.2",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^3.1.0",
     "mapbox-gl": "^1.13.2",
     "react": "^16.14.0",
